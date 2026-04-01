@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brandt Network Tracker</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #1a1a2e; min-height: 100vh; }
+
+  /* Login Screen */
+  #login-screen {
+    display: none; position: fixed; inset: 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    z-index: 9999; align-items: center; justify-content: center;
+  }
+  .login-card {
+    background: #fff; border-radius: 16px; padding: 40px; width: 100%;
+    max-width: 420px; box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .login-logo { text-align: center; margin-bottom: 28px; }
+  .login-logo .icon { font-size: 2.2rem; margin-bottom: 8px; }
+  .login-logo h1 { font-size: 1.6rem; font-weight: 800; color: #1e293b; margin: 0 0 6px; }
+  .login-logo p { color: #64748b; margin: 0; font-size: 0.9rem; }
+  .login-field { margin-bottom: 16px; }
+  .login-field label { display: block; font-weight: 600; margin-bottom: 6px; color: #374151; font-size: 0.9rem; }
+  .login-field input {
+    width: 100%; padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px;
+    font-size: 0.95rem; outline: none; transition: border 0.2s;
+  }
+  .login-field input:focus { border-color: #0f3460; }
+  .login-error {
+    display: none; background: #fee2e2; color: #dc2626; padding: 10px 14px;
+    border-radius: 8px; margin-bottom: 16px; font-size: 0.875rem;
+  }
+  .login-btn {
+    width: 100%; padding: 13px; background: linear-gradient(135deg, #e94560, #c73652);
+    color: #fff; border: none; border-radius: 8px; font-size: 1rem;
+    font-weight: 700; cursor: pointer; transition: opacity 0.15s;
+  }
+  .login-btn:hover { opacity: 0.9; }
+  .login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    color: white; padding: 22px 32px; display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.5px; }
+  header span { font-size: 0.85rem; opacity: 0.65; margin-top: 2px; display: block; }
+  .header-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .btn {
+    padding: 8px 18px; border-radius: 7px; border: none; cursor: pointer;
+    font-size: 0.85rem; font-weight: 600; transition: all 0.15s;
+  }
+  .btn-primary { background: #e94560; color: white; }
+  .btn-primary:hover { background: #c73652; }
+  .btn-review { background: #f59e0b; color: white; }
+  .btn-review:hover { background: #d97706; }
+  .btn-signout { background: rgba(255,255,255,0.12); color: #fbbf24; border: 1px solid #fbbf24; font-size:0.78rem; }
+  .btn-signout:hover { background: rgba(251,191,36,0.15); }
+  .btn-secondary { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.25); }
+  .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+  .btn-sm { padding: 5px 12px; font-size: 0.78rem; }
+  .btn-danger { background: #e94560; color: white; }
+  .btn-danger:hover { background: #c73652; }
+  .btn-ghost { background: transparent; border: 1px solid #ccc; color: #555; }
+  .btn-ghost:hover { background: #f5f5f5; }
+  .btn-success { background: #16a34a; color: white; }
+  .btn-success:hover { background: #15803d; }
+
+  .toolbar {
+    background: white; padding: 14px 32px; display: flex; gap: 12px; align-items: center;
+    border-bottom: 1px solid #e8eaed; flex-wrap: wrap;
+  }
+  .search-wrap { position: relative; flex: 1; min-width: 220px; }
+  .search-wrap input {
+    width: 100%; padding: 9px 14px 9px 38px; border: 1px solid #dde1e7; border-radius: 8px;
+    font-size: 0.9rem; outline: none; transition: border 0.2s;
+  }
+  .search-wrap input:focus { border-color: #0f3460; }
+  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #999; font-size: 1rem; }
+  select {
+    padding: 9px 14px; border: 1px solid #dde1e7; border-radius: 8px;
+    font-size: 0.9rem; outline: none; background: white; cursor: pointer;
+  }
+  select:focus { border-color: #0f3460; }
+
+  .content { padding: 24px 32px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+
+  .card {
+    background: white; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s, transform 0.15s; overflow: hidden;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); transform: translateY(-1px); }
+
+  .card-header {
+    padding: 16px 18px 12px; display: flex; align-items: flex-start; gap: 12px;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .avatar {
+    width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-weight: 700; font-size: 1.05rem; color: white; flex-shrink: 0;
+    overflow: hidden; position: relative;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+  .card-title { flex: 1; }
+  .card-title h3 { font-size: 0.98rem; font-weight: 700; color: #1a1a2e; line-height: 1.3; }
+  .card-title .firm { font-size: 0.82rem; color: #666; margin-top: 2px; }
+  .industry-tag {
+    font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 12px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .card-body { padding: 12px 18px; }
+  .info-row { display: flex; gap: 8px; align-items: baseline; margin-bottom: 7px; font-size: 0.83rem; }
+  .info-label { color: #999; font-weight: 500; min-width: 64px; flex-shrink: 0; }
+  .info-val { color: #333; word-break: break-word; }
+  .info-val a { color: #0f3460; text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+
+  .notes-box {
+    background: #fffbea; border: 1px solid #ffe58a; border-radius: 8px;
+    padding: 9px 12px; margin-top: 8px; font-size: 0.82rem; color: #555; line-height: 1.5;
+  }
+  .upcoming-box {
+    background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px;
+    padding: 9px 12px; margin-top: 8px; font-size: 0.82rem; color: #1e40af; line-height: 1.5;
+  }
+  .todo-box {
+    background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px;
+    padding: 9px 12px; margin-top: 8px; font-size: 0.82rem; color: #166534; line-height: 1.5;
+  }
+  .calldoc-box {
+    background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px;
+    padding: 9px 12px; margin-top: 8px; font-size: 0.82rem; color: #5b21b6; line-height: 1.5;
+  }
+  .calldoc-box .box-label { color: #6d28d9; }
+  .calldoc-box a { color: #5b21b6; font-weight: 600; text-decoration: none; word-break: break-all; }
+  .calldoc-box a:hover { text-decoration: underline; }
+  .linkedin-link {
+    display: inline-flex; align-items: center; gap: 5px; font-size: 0.78rem;
+    color: #0a66c2; font-weight: 600; text-decoration: none; margin-top: 5px;
+    padding: 3px 8px; border-radius: 5px; background: #e8f0fb; transition: background 0.15s;
+  }
+  .linkedin-link:hover { background: #c8daef; }
+  .photo-upload-section { display: flex; flex-direction: column; gap: 8px; }
+  .photo-preview-wrap { display: flex; align-items: center; gap: 12px; }
+  .photo-thumb {
+    width: 52px; height: 52px; border-radius: 50%; object-fit: cover;
+    border: 2px solid #e0e0e0; display: none;
+  }
+  .photo-thumb.visible { display: block; }
+  .photo-upload-btn {
+    padding: 7px 14px; border: 1.5px dashed #aaa; border-radius: 8px;
+    background: #fafafa; cursor: pointer; font-size: 0.82rem; color: #555;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .photo-upload-btn:hover { border-color: #0f3460; background: #f0f4ff; color: #0f3460; }
+  .box-label {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 3px;
+  }
+  .notes-box .box-label { color: #b8860b; }
+  .upcoming-box .box-label { color: #1d4ed8; }
+  .todo-box .box-label { color: #15803d; }
+
+  .card-footer {
+    padding: 10px 18px; border-top: 1px solid #f0f2f5;
+    display: flex; gap: 8px; justify-content: flex-end;
+  }
+
+  .table-wrap { overflow-x: auto; background: white; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  thead tr { background: #f8f9fa; }
+  th { padding: 12px 14px; text-align: left; font-weight: 600; color: #555; border-bottom: 2px solid #e8eaed; white-space: nowrap; }
+  td { padding: 11px 14px; border-bottom: 1px solid #f0f2f5; color: #333; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fafbfc; }
+  td.notes-td { max-width: 200px; }
+  .pill-inline { border-radius: 5px; padding: 3px 7px; font-size: 0.78rem; }
+  .pill-notes { background: #fffbea; color: #92400e; }
+  .pill-upcoming { background: #eff6ff; color: #1e40af; }
+  .pill-todo { background: #f0fdf4; color: #166534; }
+  .pill-calldoc { background: #f5f3ff; color: #5b21b6; }
+
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+    z-index: 1000; align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: white; border-radius: 14px; padding: 28px 32px; width: 580px; max-width: 95vw;
+    max-height: 90vh; overflow-y: auto; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+  .modal h2 { font-size: 1.15rem; margin-bottom: 20px; color: #1a1a2e; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 0.8rem; font-weight: 600; color: #555; }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 9px 12px; border: 1px solid #dde1e7; border-radius: 8px;
+    font-size: 0.88rem; font-family: inherit; outline: none; transition: border 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #0f3460; }
+  .form-group textarea { resize: vertical; min-height: 70px; }
+  .modal-footer { display: flex; gap: 10px; justify-content: flex-end; margin-top: 22px; }
+  .form-section-label {
+    grid-column: 1 / -1; font-size: 0.78rem; font-weight: 700; color: #888;
+    text-transform: uppercase; letter-spacing: 0.5px; padding-top: 6px;
+    border-top: 1px solid #f0f2f5; margin-top: 4px;
+  }
+
+  .review-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(10,10,20,0.7);
+    z-index: 2000; align-items: center; justify-content: center;
+  }
+  .review-overlay.open { display: flex; }
+  .review-panel {
+    background: white; border-radius: 16px; width: 700px; max-width: 96vw;
+    max-height: 92vh; overflow-y: auto; box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+    display: flex; flex-direction: column;
+  }
+  .review-header {
+    padding: 20px 28px 16px; border-bottom: 1px solid #f0f2f5;
+    display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+  }
+  .review-header h2 { font-size: 1.1rem; color: #1a1a2e; }
+  .review-progress { font-size: 0.82rem; color: #888; }
+  .progress-bar-wrap { height: 4px; background: #f0f2f5; flex-shrink: 0; }
+  .progress-bar { height: 4px; background: #f59e0b; transition: width 0.3s; }
+
+  .review-body { padding: 24px 28px; flex: 1; }
+  .review-contact-banner {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 22px;
+    padding: 14px 18px; background: #f8f9fa; border-radius: 10px;
+  }
+  .review-avatar {
+    width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-weight: 800; font-size: 1.1rem; color: white; flex-shrink: 0;
+    overflow: hidden;
+  }
+  .review-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+  .review-name { font-size: 1.05rem; font-weight: 700; color: #1a1a2e; }
+  .review-firm { font-size: 0.85rem; color: #666; margin-top: 2px; }
+  .review-last { font-size: 0.78rem; color: #888; margin-top: 3px; }
+
+  .review-questions { display: flex; flex-direction: column; gap: 16px; }
+  .review-q { display: flex; flex-direction: column; gap: 6px; }
+  .review-q label {
+    font-size: 0.82rem; font-weight: 700; color: #374151; display: flex; align-items: center; gap: 6px;
+  }
+  .q-icon { font-size: 1rem; }
+  .review-q input, .review-q select, .review-q textarea {
+    padding: 10px 13px; border: 1.5px solid #dde1e7; border-radius: 9px;
+    font-size: 0.9rem; font-family: inherit; outline: none; transition: border 0.2s;
+  }
+  .review-q input:focus, .review-q select:focus, .review-q textarea:focus { border-color: #f59e0b; }
+  .review-q textarea { resize: vertical; min-height: 68px; }
+  .review-q .hint { font-size: 0.76rem; color: #aaa; margin-top: 2px; }
+
+  .review-footer {
+    padding: 16px 28px; border-top: 1px solid #f0f2f5; display: flex;
+    gap: 10px; justify-content: space-between; flex-shrink: 0; flex-wrap: wrap;
+  }
+  .review-footer-left { display: flex; gap: 8px; }
+  .review-footer-right { display: flex; gap: 8px; }
+
+  .view-toggle { display: flex; gap: 4px; }
+  .view-btn {
+    padding: 7px 12px; border: 1px solid #dde1e7; background: white; border-radius: 7px;
+    cursor: pointer; font-size: 1rem; color: #666; transition: all 0.15s;
+  }
+  .view-btn.active { background: #0f3460; color: white; border-color: #0f3460; }
+
+  .no-results { text-align: center; padding: 60px 20px; color: #999; }
+  .no-results .icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+  .tag-finance { background: #e8f0fe; color: #1967d2; }
+  .tag-consulting { background: #e6f4ea; color: #137333; }
+  .tag-entrepreneurship { background: #fce8e6; color: #c5221f; }
+  .tag-marketing { background: #fef7e0; color: #b45309; }
+  .tag-ib { background: #f3e8fd; color: #7c3aed; }
+  .tag-pe { background: #fdf2e9; color: #9a3412; }
+  .tag-wealth { background: #e0f7fa; color: #00838f; }
+  .tag-other { background: #f5f5f5; color: #666; }
+  .av-finance { background: #1967d2; }
+  .av-consulting { background: #137333; }
+  .av-entrepreneurship { background: #c5221f; }
+  .av-marketing { background: #b45309; }
+  .av-ib { background: #7c3aed; }
+  .av-pe { background: #9a3412; }
+  .av-wealth { background: #00838f; }
+  .av-other { background: #555; }
+
+  .last-contact-chip {
+    display: inline-block; font-size: 0.75rem; padding: 2px 8px; border-radius: 10px;
+    background: #f0f2f5; color: #555;
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 16px; }
+    .toolbar { padding: 12px 16px; }
+    .content { padding: 16px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .review-body { padding: 18px; }
+    .review-header, .review-footer { padding: 14px 18px; }
+  }
+  .multi-input-list { display:flex; flex-direction:column; gap:6px; margin-bottom:6px; }
+  .multi-input-row { display:flex; gap:6px; align-items:center; }
+  .multi-input-row input { flex:1; }
+  .multi-input-row .remove-input-btn { background:none; border:1px solid #ddd; border-radius:6px; color:#999; cursor:pointer; font-size:14px; padding:0 8px; height:36px; line-height:36px; }
+  .multi-input-row .remove-input-btn:hover { background:#fee2e2; border-color:#fca5a5; color:#dc2626; }
+  .add-more-btn { background:none; border:1px dashed #a3b4cc; border-radius:6px; color:#4a6fa5; cursor:pointer; font-size:0.8rem; padding:5px 12px; margin-top:2px; }
+  .add-more-btn:hover { background:#eef2f9; }
+
+  .btn-action-items { background:#f59e0b; color:#fff; border:none; }
+  .btn-action-items:hover { background:#d97706; }
+
+  .action-items-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:1000; display:flex; align-items:flex-start; justify-content:center; padding:24px 16px; opacity:0; pointer-events:none; transition:opacity .25s; overflow-y:auto; }
+  .action-items-overlay.open { opacity:1; pointer-events:all; }
+  .ai-panel { background:#fff; border-radius:16px; width:100%; max-width:760px; box-shadow:0 20px 60px rgba(0,0,0,0.25); overflow:hidden; }
+  .ai-header { background:linear-gradient(135deg,#f59e0b,#d97706); padding:24px 28px 20px; position:relative; color:#fff; }
+  .ai-title { font-size:1.5rem; font-weight:700; }
+  .ai-subtitle { font-size:0.9rem; opacity:0.85; margin-top:4px; }
+  .ai-header .review-close-btn { position:absolute; top:16px; right:16px; background:rgba(255,255,255,0.25); color:#fff; border:none; border-radius:50%; width:32px; height:32px; font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .ai-body { padding:20px 24px; display:flex; flex-direction:column; gap:20px; }
+  .ai-section { }
+  .ai-section-header { font-size:1rem; font-weight:700; color:#1e293b; padding:10px 14px; background:#f8fafc; border-radius:8px; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .ai-count { background:#e2e8f0; color:#475569; font-size:0.75rem; font-weight:600; padding:2px 8px; border-radius:99px; margin-left:auto; }
+  .ai-empty { color:#94a3b8; font-size:0.875rem; padding:10px 14px; font-style:italic; }
+  .ai-card { display:flex; align-items:flex-start; gap:14px; padding:14px; border:1px solid #e2e8f0; border-radius:10px; margin-bottom:8px; background:#fff; transition:box-shadow .15s; }
+  .ai-card:hover { box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+  .ai-card-left .avatar-img, .ai-card-left .avatar-initials { width:44px; height:44px; border-radius:50%; object-fit:cover; font-size:0.85rem; }
+  .ai-card-left .avatar-initials { background:#4a6fa5; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; }
+  .ai-card-body { flex:1; min-width:0; }
+  .ai-card-name { font-weight:700; color:#1e293b; font-size:0.95rem; }
+  .ai-card-meta { font-size:0.8rem; color:#64748b; margin-top:1px; }
+  .ai-card-contact { font-size:0.78rem; color:#94a3b8; margin-top:2px; }
+  .ai-tag { font-size:0.8rem; margin-top:6px; padding:4px 10px; border-radius:6px; display:inline-block; }
+  .ai-tag-upcoming { background:#dbeafe; color:#1d4ed8; }
+  .ai-tag-todo { background:#dcfce7; color:#15803d; }
+  .ai-tag-last { background:#f1f5f9; color:#64748b; }
+  .ai-card-edit { flex-shrink:0; background:none; border:1px solid #e2e8f0; border-radius:6px; color:#4a6fa5; cursor:pointer; font-size:0.8rem; padding:5px 12px; height:fit-content; margin-top:2px; }
+  .ai-card-edit:hover { background:#eef2f9; }
+
+  .loading-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.8);
+    z-index: 8000; align-items: center; justify-content: center; flex-direction: column; gap: 12px;
+  }
+  .loading-overlay.show { display: flex; }
+  .spinner {
+    width: 40px; height: 40px; border: 4px solid #e2e8f0;
+    border-top-color: #0f3460; border-radius: 50%; animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<!-- Login Screen -->
+<div id="login-screen" style="display:flex">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="icon">🌐</div>
+      <h1>Brandt Network Tracker</h1>
+      <p>Sign in to access your network</p>
+    </div>
+    <div class="login-field">
+      <label>Email</label>
+      <input id="login-email" type="email" placeholder="your@email.com">
+    </div>
+    <div class="login-field">
+      <label>Password</label>
+      <input id="login-password" type="password" placeholder="••••••••••••">
+    </div>
+    <div class="login-error" id="login-error"></div>
+    <button class="login-btn" id="login-btn" onclick="signIn()">Sign In</button>
+  </div>
+</div>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="spinner"></div>
+  <div style="color:#555;font-size:0.9rem">Loading your network...</div>
+</div>
+
+<!-- Main App -->
+<div id="app" style="display:none">
+
+<header>
+  <div>
+    <h1>Brandt Network Tracker</h1>
+    <span id="header-count"></span>
+  </div>
+  <div class="header-actions">
+    <button class="btn btn-secondary" onclick="exportCSV()">Export CSV</button>
+    <button class="btn btn-signout" onclick="signOut()">🚪 Sign Out</button>
+    <button class="btn btn-action-items" onclick="openActionItems()">&#9889; Action Items</button>
+    <button class="btn btn-review" onclick="startReview()">&#9654; Review Contacts</button>
+    <button class="btn btn-primary" onclick="openAddModal()">+ Add Contact</button>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="search-wrap">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" id="search" placeholder="Search name, firm, industry..." oninput="renderAll()">
+  </div>
+  <select id="filter-industry" onchange="renderAll()">
+    <option value="">All Industries</option>
+  </select>
+  <select id="filter-sort" onchange="renderAll()">
+    <option value="name">Sort: Name</option>
+    <option value="firm">Sort: Firm</option>
+    <option value="recent">Sort: Recently Contacted</option>
+    <option value="industry">Sort: Industry</option>
+  </select>
+  <div class="view-toggle">
+    <button class="view-btn active" id="vbtn-grid" onclick="setView('grid')" title="Grid">&#9783;</button>
+    <button class="view-btn" id="vbtn-table" onclick="setView('table')" title="Table">&#9776;</button>
+  </div>
+</div>
+
+<div class="content">
+  <div id="view-grid" class="grid"></div>
+  <div id="view-table" class="table-wrap" style="display:none">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th><th>Firm</th><th>Title</th><th>Industry</th><th>Email</th><th>Phone</th>
+          <th>Last Contacted</th><th>Upcoming</th><th>To-Do / Notes</th><th>Call Doc</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+  <div id="no-results" class="no-results" style="display:none">
+    <div class="icon">&#128269;</div>
+    <div>No contacts found</div>
+  </div>
+</div>
+
+<!-- Add/Edit Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h2 id="modal-title">Add Contact</h2>
+    <div class="form-grid">
+      <div class="form-group"><label>Name *</label><input id="f-name" placeholder="Full name"></div>
+      <div class="form-group"><label>Firm / Company</label><input id="f-firm" placeholder="e.g. Goldman Sachs"></div>
+      <div class="form-group full"><label>&#127970; Title / Role</label><input id="f-title" placeholder="e.g. VP of Equity Trading, Associate, Analyst..."></div>
+      <div class="form-group full">
+        <label>Email(s)</label>
+        <div id="f-emails-list" class="multi-input-list"></div>
+        <button type="button" class="add-more-btn" onclick="addMultiInput('f-emails-list','email','email@example.com')">+ Add another email</button>
+      </div>
+      <div class="form-group full">
+        <label>Phone(s)</label>
+        <div id="f-phones-list" class="multi-input-list"></div>
+        <button type="button" class="add-more-btn" onclick="addMultiInput('f-phones-list','tel','xxx-xxx-xxxx')">+ Add another phone</button>
+      </div>
+      <div class="form-group"><label>Industry</label>
+        <select id="f-industry">
+          <option value="">Select industry...</option>
+          <option>Finance</option><option>Investment Banking</option><option>Private Equity</option>
+          <option>Asset Management</option><option>Wealth Management</option><option>Consulting</option>
+          <option>Entrepreneurship</option><option>Marketing</option><option>Sales</option>
+          <option>Sales and Trading</option><option>Sustainable Finance</option>
+          <option>Real Estate</option><option>Insurance</option><option>Technology</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Age / Age Range</label><input id="f-age" placeholder="e.g. 30 or 50+"></div>
+      <div class="form-section-label">Activity</div>
+      <div class="form-group full"><label>Last Time Contacted</label><input id="f-last" placeholder="e.g. Call on 3/26/2026"></div>
+      <div class="form-group full"><label>&#128197; Upcoming Call / Meeting</label><input id="f-upcoming" placeholder="e.g. Call scheduled for 4/7/2026"></div>
+      <div class="form-group full"><label>&#9989; To-Do</label><textarea id="f-todo" placeholder="e.g. Follow up next week, send resume, ask for intro..."></textarea></div>
+      <div class="form-group full"><label>&#128203; Notes</label><textarea id="f-notes" placeholder="Background, advice given, referrals..."></textarea></div>
+      <div class="form-group full"><label>&#128279; Call Notes (Google Doc Link)</label><input id="f-calldoc" type="url" placeholder="https://docs.google.com/..."></div>
+      <div class="form-group full"><label>&#128100; LinkedIn Profile URL</label><input id="f-linkedin" type="url" placeholder="https://linkedin.com/in/..."></div>
+      <div class="form-group full">
+        <label>&#128247; Profile Photo</label>
+        <div class="photo-upload-section">
+          <div class="photo-preview-wrap">
+            <img id="f-photo-thumb" class="photo-thumb" src="" alt="photo preview">
+            <label class="photo-upload-btn">&#128247; Upload Photo from Computer<input type="file" accept="image/*" style="display:none" onchange="handlePhotoUpload(this,'f-photo-thumb','f-photo')"></label>
+          </div>
+          <input id="f-photo" type="url" placeholder="Or paste a photo URL (optional)" oninput="previewPhotoUrl(this,'f-photo-thumb')">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveContact()">Save Contact</button>
+    </div>
+  </div>
+</div>
+
+<!-- Review Panel -->
+<div class="review-overlay" id="review-overlay">
+  <div class="review-panel">
+    <div class="review-header">
+      <div>
+        <h2>&#128221; Review Contacts</h2>
+        <div class="review-progress" id="rev-progress">Contact 1 of 39</div>
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="closeReview()">&#10005; Exit</button>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="rev-bar" style="width:0%"></div></div>
+    <div class="review-body">
+      <div class="review-contact-banner">
+        <div class="review-avatar" id="rev-avatar"></div>
+        <div>
+          <div class="review-name" id="rev-name"></div>
+          <div class="review-firm" id="rev-firm"></div>
+          <div class="review-last" id="rev-last"></div>
+        </div>
+      </div>
+      <div class="review-questions">
+        <div class="review-q">
+          <label><span class="q-icon">🏢</span> Where do they work? Confirm or update firm.</label>
+          <input id="rev-f-firm" placeholder="Firm / Company">
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">🏷️</span> What is their title or role?</label>
+          <input id="rev-f-title" placeholder="e.g. VP of Equity Trading, Associate, Analyst...">
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">✉️</span> Email address(es) — confirm or add more.</label>
+          <div id="rev-emails-list" class="multi-input-list"></div>
+          <button type="button" class="add-more-btn" onclick="addMultiInput('rev-emails-list','email','email@example.com')">+ Add another email</button>
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">📱</span> Phone number(s) — confirm or add more.</label>
+          <div id="rev-phones-list" class="multi-input-list"></div>
+          <button type="button" class="add-more-btn" onclick="addMultiInput('rev-phones-list','tel','xxx-xxx-xxxx')">+ Add another phone</button>
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">💼</span> What industry are they in?</label>
+          <select id="rev-f-industry">
+            <option value="">Select industry...</option>
+            <option>Finance</option><option>Investment Banking</option><option>Private Equity</option>
+            <option>Asset Management</option><option>Wealth Management</option><option>Consulting</option>
+            <option>Entrepreneurship</option><option>Marketing</option><option>Sales</option>
+            <option>Sales and Trading</option><option>Sustainable Finance</option>
+            <option>Real Estate</option><option>Insurance</option><option>Technology</option><option>Other</option>
+          </select>
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">📞</span> When did you last connect with them?</label>
+          <input id="rev-f-last" placeholder="e.g. Call on 3/26/2026 — or leave as-is">
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">📅</span> Any upcoming call or meeting scheduled?</label>
+          <input id="rev-f-upcoming" placeholder="e.g. Call on 4/7/2026 at 2pm">
+          <span class="hint">Leave blank if nothing scheduled.</span>
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">✅</span> What do you need to do for this person?</label>
+          <textarea id="rev-f-todo" placeholder="e.g. Follow up next week, send resume, ask for intro to their contact..."></textarea>
+          <span class="hint">Action items, follow-ups, things you promised.</span>
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">📋</span> Any notes to add or update?</label>
+          <textarea id="rev-f-notes" placeholder="Advice they gave, who they referred you to, context..."></textarea>
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">🔗</span> Do you have a Google Doc with notes from your call?</label>
+          <input id="rev-f-calldoc" type="url" placeholder="Paste Google Doc link here (https://docs.google.com/...)">
+          <span class="hint">Leave blank if you don't have one.</span>
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">💼</span> LinkedIn Profile URL</label>
+          <input id="rev-f-linkedin" type="url" placeholder="https://linkedin.com/in/...">
+        </div>
+        <div class="review-q">
+          <label><span class="q-icon">📷</span> Profile Photo</label>
+          <div class="photo-upload-section">
+            <div class="photo-preview-wrap">
+              <img id="rev-photo-thumb" class="photo-thumb" src="" alt="photo preview">
+              <label class="photo-upload-btn">📷 Upload Photo from Computer<input type="file" accept="image/*" style="display:none" onchange="handlePhotoUpload(this,'rev-photo-thumb','rev-f-photo')"></label>
+            </div>
+            <input id="rev-f-photo" type="url" placeholder="Or paste a photo URL" oninput="previewPhotoUrl(this,'rev-photo-thumb')">
+          </div>
+          <span class="hint">Upload from your computer or paste a URL.</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-footer">
+      <div class="review-footer-left">
+        <button class="btn btn-ghost" onclick="reviewPrev()">&#8592; Back</button>
+        <button class="btn btn-ghost" onclick="reviewSkip()">Skip</button>
+      </div>
+      <div class="review-footer-right">
+        <button class="btn btn-success" id="rev-next-btn" onclick="reviewSaveNext()">Save &amp; Next &#8594;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Action Items Overlay -->
+<div class="action-items-overlay" id="action-items-overlay">
+  <div class="ai-panel">
+    <div class="ai-header">
+      <div class="ai-title">⚡ Action Items</div>
+      <div class="ai-subtitle">Everyone you need to reach out to or follow up with</div>
+      <button class="review-close-btn" onclick="closeActionItems()">&#10005;</button>
+    </div>
+    <div class="ai-body" id="ai-body"></div>
+  </div>
+</div>
+
+</div><!-- end #app -->
+
+<script>
+// ── Supabase ──────────────────────────────────────────────────────────────────
+const _sb = window.supabase.createClient(
+  'https://lwvbpvnamuxevcwnngdu.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dmJwdm5hbXV4ZXZjd25uZ2R1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5OTA1MzUsImV4cCI6MjA5MDU2NjUzNX0.s4-iwHehTZMd2MPSm54QL5n6xfIGcX8JdVpWVwB9XCU'
+);
+
+let currentUser = null;
+let contacts = [];
+let editId = null;
+let currentView = 'grid';
+let reviewQueue = [];
+let reviewIdx = 0;
+
+// ── Auth ──────────────────────────────────────────────────────────────────────
+async function signIn() {
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  const errEl = document.getElementById('login-error');
+  const btn = document.getElementById('login-btn');
+  errEl.style.display = 'none';
+  if (!email || !password) {
+    errEl.textContent = 'Please enter your email and password.';
+    errEl.style.display = 'block'; return;
+  }
+  btn.disabled = true; btn.textContent = 'Signing in...';
+  const { error } = await _sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    errEl.textContent = error.message;
+    errEl.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Sign In';
+  }
+}
+
+async function signOut() {
+  await _sb.auth.signOut();
+}
+
+function showLogin() {
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-btn').disabled = false;
+  document.getElementById('login-btn').textContent = 'Sign In';
+}
+
+function showApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+}
+
+_sb.auth.onAuthStateChange(async (event, session) => {
+  if (session && session.user) {
+    currentUser = session.user;
+    showApp();
+    setLoading(true);
+    try {
+      await load();
+    } catch(e) {
+      console.error('Load failed:', e);
+      alert('Error loading contacts: ' + e.message);
+    } finally {
+      setLoading(false);
+    }
+  } else {
+    currentUser = null;
+    contacts = [];
+    showLogin();
+  }
+});
+
+(async () => {
+  const { data: { session } } = await _sb.auth.getSession();
+  if (!session) showLogin();
+})();
+
+function setLoading(on) {
+  document.getElementById('loading-overlay').classList.toggle('show', on);
+}
+
+// ── Seed Data ─────────────────────────────────────────────────────────────────
+const SEED_DATA = [
+  { name:"Rick Donovan",          emails:["richard.t.donovan@gmail.com"], phones:[],               firm:"Morgan Stanley",                                                          age:"38",  industry:"Finance",           last:"Emailed on 5/27/24 - no response",            upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Jeff Chatlos",           emails:[],                             phones:["617-694-2284"],  firm:"Bank of America (Private Bank)",                                          age:"50+", industry:"Finance",           last:"Text convo 6/11/24",                          upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Nancy Bruns",            emails:[],                             phones:["828-226-1830"],  firm:"J.Q. Dickinson Saltworks",                                                age:"60+", industry:"Entrepreneurship",  last:"Call on 6/5/24",                              upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"David Bayuk",            emails:[],                             phones:["914-924-0931"],  firm:"Accenture",                                                               age:"40+", industry:"Marketing",         last:"Call on 3/23/26",                             upcoming:"", todo:"", notes:"He is going to put me in touch with his contacts", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Matthew D'Antoni",       emails:[],                             phones:[],               firm:"J.P. Morgan",                                                             age:"23",  industry:"Finance",           last:"",                                            upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Ken Freeman",            emails:["kfreeman@bu.edu"],            phones:[],               firm:"Quest Diagnostics",                                                       age:"60+", industry:"Entrepreneurship",  last:"Emailed convo on 6/20/2023",                  upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Jackson Greeley",        emails:["jackson.greeley@gs.com"],     phones:["617-620-7763"], firm:"Goldman Sachs",                                                           age:"25",  industry:"Finance",           last:"Text convo on 3/16/2024",                     upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Max Chandler",           emails:[],                             phones:["203-692-5789"], firm:"Aon",                                                                     age:"23",  industry:"Insurance",         last:"Call on 6/5/2024",                            upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Michael Constantinides", emails:["mgconstant@outlook.com"],     phones:["WhatsApp"],     firm:"Accenture",                                                               age:"40+", industry:"Consulting",        last:"Email convo on 6/31/2024",                    upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"William Pfister",        emails:["William.Pfister@mizuhogroup.com"], phones:["(203) 610-0212"], firm:"Mizuho",                                                           age:"30",  industry:"Investment Banking", last:"Interview call on 2/22/2024",                 upcoming:"", todo:"", notes:"Never answered last email", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Shawn O'Neill",          emails:[],                             phones:["617-331-2692"], firm:"Bank of America (Merrill Lynch)",                                          age:"50",  industry:"Wealth Management", last:"Text and referred on 6/4/2024",               upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Evan Berkely",           emails:["evanbrettberkley@gmail.com"], phones:["917-597-2258"], firm:"Entrepreneurship/Consulting",                                             age:"",    industry:"Entrepreneurship",  last:"Text often",                                  upcoming:"", todo:"", notes:"Put me in contact with Leah Wahba (CEO of ARIZE)", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Bryce Turkheimer",       emails:["bturkheimer@deloitte.com"],   phones:[],               firm:"Deloitte",                                                                age:"30",  industry:"Consulting",        last:"Email convo on 1/29/2024",                    upcoming:"", todo:"", notes:"Told me I was waitlisted at Deloitte for internship going into senior year", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Michael Molinet",        emails:[],                             phones:["651-788-6176"], firm:"Branch and Thena",                                                        age:"30",  industry:"Entrepreneurship",  last:"Call on 3/9/2026",                            upcoming:"", todo:"", notes:"Encourages me to build something in Claude", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Brad Langer",            emails:[],                             phones:["914-525-8072"], firm:"Brown Brothers Harriman & Co.",                                           age:"50+", industry:"Private Equity",   last:"Call in December 2025",                       upcoming:"", todo:"", notes:"Talked about how to break into PE/VC", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Matt Hornbuckle",        emails:["matthew.r.horn@gmail.com"],   phones:[],               firm:"Stantt (co-founder)",                                                     age:"30",  industry:"Entrepreneurship",  last:"Zoom call on 7/25/24",                        upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Devin Cooch",            emails:["devincooch@gmail.com"],       phones:[],               firm:"Eaton Vance (MS-owned)",                                                  age:"30",  industry:"Finance",           last:"Zoom call on 8/14/24",                        upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Dominick Bizzarro",      emails:["dominick@innovatorswithin.com"], phones:["518-641-8576"], firm:"Career Advice",                                                        age:"60+", industry:"Consulting",        last:"Zoom call on 8/19/24",                        upcoming:"", todo:"", notes:"\"Go for EcoMark. It's your passion.\"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Eric Guja",              emails:["eric.guja@gmail.com"],        phones:[],               firm:"Newbury Partners",                                                        age:"40",  industry:"Private Equity",   last:"Zoom call on 8/23/24",                        upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Emily Williamson",       emails:[],                             phones:["973-665-4197"], firm:"HW Anderson",                                                             age:"24",  industry:"Consulting",        last:"Call on 2/3/2026",                            upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Isabelle DeZenzo",       emails:[],                             phones:["917-757-4016"], firm:"Tubi",                                                                    age:"28",  industry:"Marketing",         last:"Call on 2/11/2026",                           upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Sean Wheatley",          emails:[],                             phones:["908-403-4886"], firm:"MLB",                                                                     age:"32",  industry:"Other",             last:"Call on 2/11/2026",                           upcoming:"", todo:"", notes:"On-Field Analytics Director", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Claire McMahon",         emails:["claire.mcmahon@pwc.com"],     phones:["973-567-2920"], firm:"PwC",                                                                     age:"27",  industry:"Consulting",        last:"Call on 2/11/2026",                           upcoming:"", todo:"", notes:"Investigations and forensics", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Tim Simonds",            emails:["tim.simonds@gmail.com"],      phones:[],               firm:"Frontenac / Board of Director",                                           age:"50+", industry:"Private Equity",   last:"Call on 2/9/2026",                            upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Seth Brody",             emails:["Seth.Brody@apax.com"],        phones:[],               firm:"APAX / Board of Director",                                                age:"40+", industry:"Private Equity",   last:"Call on 2/4/2026",                            upcoming:"", todo:"", notes:"Very helpful in my decision with HW Anderson. Never put me in contact with anyone.", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Scott Werneburg",        emails:["SWerneburg@freepoint.com"],   phones:["203-505-2244"], firm:"Freepoint Commodities",                                                   age:"50",  industry:"Sales and Trading", last:"Call on 1/15/2026 and follow-up on 2/9/2026", upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Mr. Lefebvre",           emails:[],                             phones:["617-642-4239"], firm:"Charles River Associates / Angel Investor at Venture Launchpad Group",   age:"55+", industry:"Finance",           last:"Call on 1/28/2026",                           upcoming:"", todo:"", notes:"Never answered my text about putting me in touch with start-ups he knows", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Simon Krohn",            emails:[],                             phones:["914-714-8068"], firm:"Paycom",                                                                  age:"25",  industry:"Other",             last:"Call on 3/12/2024",                           upcoming:"", todo:"", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Craig Daily",            emails:["cdaily@mlp.com"],             phones:[],               firm:"Millennium",                                                              age:"50",  industry:"Finance",           last:"Call on 3/6/2026",                            upcoming:"", todo:"", notes:"Put me in contact with Michael Jordan. Gave resume tips, very honest. Said good things about me to his daughter Morgan.", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Justin Choi",            emails:["justin.Choi@blackrock.com"],  phones:["646-951-2314"], firm:"BlackRock",                                                               age:"29",  industry:"Finance",           last:"Call on 3/25/2026",                           upcoming:"Follow up in 3 weeks", todo:"Follow up with Justin Choi in ~3 weeks", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Emma Hochman",           emails:[],                             phones:["914-806-4199"], firm:"VaynerMedia",                                                             age:"28",  industry:"Marketing",         last:"Call on 3/23/2026",                           upcoming:"", todo:"Reach out to the 3 strategy contacts she referred. Stay in touch for VaynerMedia residency program.", notes:"", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Carrie Walczak",         emails:["carriewalczak1@gmail.com"],   phones:[],               firm:"(Career break)",                                                          age:"",    industry:"Other",             last:"Call on 3/16/2026",                           upcoming:"", todo:"Stay in touch — she sends sustainable finance opportunities over LinkedIn", notes:"Climate Strategy / Sustainable Finance", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Jamie Fedorjaka",        emails:[],                             phones:[],               firm:"Stifel",                                                                  age:"25",  industry:"Finance",           last:"Call being scheduled",                        upcoming:"Call being scheduled", todo:"Schedule the call", notes:"Electronic Trading", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Bruce Keenan",           emails:[],                             phones:["(631) 710-8153"], firm:"Stifel",                                                                age:"29",  industry:"Finance",           last:"Call on 3/31/2026",                           upcoming:"", todo:"", notes:"Investments", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"RJ Grant",               emails:["rgrant@stifel.com"],          phones:[],               firm:"Stifel",                                                                  age:"45",  industry:"Finance",           last:"Call on 3/23/2026",                           upcoming:"Follow up April 7th to schedule office visit", todo:"Follow up April 7th — schedule time to come in and shadow traders", notes:"Head of Equity Trading Desk at Stifel", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Michael Jordan",         emails:["Michael.K.Jordan@mlp.com"],   phones:[],               firm:"Millennium",                                                              age:"40",  industry:"Finance",           last:"Call on 3/20/2026",                           upcoming:"", todo:"Wait for him to put me in touch with colleagues — follow up if no word", notes:"His group does not hire right now (only him) but is growing soon", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Jordan Fialkoff",        emails:["JFialkoff@fjcapital.com"],    phones:["703-725-6572"], firm:"FJ Capital Management",                                                   age:"40",  industry:"Finance",           last:"Call on 2/18/2026 (continual conversations)", upcoming:"", todo:"", notes:"Put me in touch with RJ Grant. Has given great advice and been extremely open. Great dude.", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Henrik Sukonnik",        emails:["henrik.sukonnik@hw-anderson.com"], phones:[],          firm:"HW Anderson",                                                             age:"40",  industry:"Consulting",        last:"Interviewed in-person on 3/4/2026",           upcoming:"", todo:"", notes:"Executive Search. Declined job offer — compensation not where I want it.", calldoc:"", linkedin:"", photo:"", title:"" },
+  { name:"Callie Danforth",        emails:["callie.danforth@hw-anderson.com"], phones:[],          firm:"HW Anderson",                                                             age:"30",  industry:"Consulting",        last:"Interviewed in-person on 3/4/2026",           upcoming:"", todo:"", notes:"Executive Search. Declined job offer — compensation not where I want it.", calldoc:"", linkedin:"", photo:"", title:"" },
+];
+
+// ── Data Layer (Supabase) ─────────────────────────────────────────────────────
+function _toRow(c) {
+  return {
+    user_id: currentUser.id,
+    name: c.name || '',
+    emails: c.emails || [],
+    phones: c.phones || [],
+    firm: c.firm || '',
+    title: c.title || '',
+    age: c.age || '',
+    industry: c.industry || '',
+    last_contacted: c.last || '',
+    upcoming: c.upcoming || '',
+    todo: c.todo || '',
+    notes: c.notes || '',
+    calldoc: c.calldoc || '',
+    linkedin: c.linkedin || '',
+    photo: c.photo || ''
+  };
+}
+
+function _fromRow(row) {
+  return {
+    id: row.id,
+    name: row.name || '',
+    emails: row.emails || [],
+    phones: row.phones || [],
+    firm: row.firm || '',
+    title: row.title || '',
+    age: row.age || '',
+    industry: row.industry || '',
+    last: row.last_contacted || '',
+    upcoming: row.upcoming || '',
+    todo: row.todo || '',
+    notes: row.notes || '',
+    calldoc: row.calldoc || '',
+    linkedin: row.linkedin || '',
+    photo: row.photo || ''
+  };
+}
+
+async function load() {
+  const { data, error } = await _sb.from('contacts').select('*').order('name');
+  if (error) throw new Error('Failed to fetch contacts: ' + error.message);
+  contacts = (data || []).map(_fromRow);
+  if (contacts.length === 0) {
+    try { await seedContacts(); } catch(e) { console.error('Seed failed:', e); }
+  }
+  populateFilters();
+  renderAll();
+}
+
+async function seedContacts() {
+  const rows = SEED_DATA.map(_toRow);
+  const { data, error } = await _sb.from('contacts').insert(rows).select();
+  if (error) { console.error('Seed error:', error); return; }
+  contacts = (data || []).map(_fromRow);
+}
+
+async function _upsertContact(c) {
+  if (c.id) {
+    const { data, error } = await _sb.from('contacts').update(_toRow(c)).eq('id', c.id).eq('user_id', currentUser.id).select().single();
+    if (error) console.error(error);
+    return data ? _fromRow(data) : c;
+  } else {
+    const { data, error } = await _sb.from('contacts').insert(_toRow(c)).select().single();
+    if (error) console.error(error);
+    return data ? _fromRow(data) : c;
+  }
+}
+
+async function _deleteContact(id) {
+  const { error } = await _sb.from('contacts').delete().eq('id', id).eq('user_id', currentUser.id);
+  if (error) console.error(error);
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function getIndustryClass(industry) {
+  if (!industry) return 'other';
+  const i = industry.toLowerCase();
+  if (i.includes('investment bank')) return 'ib';
+  if (i.includes('private equity')) return 'pe';
+  if (i.includes('wealth')) return 'wealth';
+  if (i.includes('consult')) return 'consulting';
+  if (i.includes('entrepreneur')) return 'entrepreneurship';
+  if (i.includes('market')) return 'marketing';
+  if (i.includes('financ') || i.includes('trading') || i.includes('bank')) return 'finance';
+  return 'other';
+}
+
+function initials(name) {
+  return name.split(' ').slice(0,2).map(w => w[0] || '').join('').toUpperCase();
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function populateFilters() {
+  const sel = document.getElementById('filter-industry');
+  const industries = [...new Set(contacts.map(c => c.industry).filter(Boolean))].sort();
+  sel.innerHTML = '<option value="">All Industries</option>' +
+    industries.map(i => `<option value="${i}">${i}</option>`).join('');
+}
+
+function filterAndSort() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const ind = document.getElementById('filter-industry').value;
+  const sort = document.getElementById('filter-sort').value;
+  let result = contacts.filter(c => {
+    if (ind && c.industry !== ind) return false;
+    if (!q) return true;
+    const emailStr = (c.emails||[]).join(' ');
+    const phoneStr = (c.phones||[]).join(' ');
+    return (c.name+c.firm+c.industry+emailStr+phoneStr+c.notes+c.last+c.todo+c.upcoming).toLowerCase().includes(q);
+  });
+  result.sort((a,b) => {
+    if (sort === 'firm') return (a.firm||'').localeCompare(b.firm||'');
+    if (sort === 'industry') return (a.industry||'').localeCompare(b.industry||'');
+    if (sort === 'recent') return (b.last||'').localeCompare(a.last||'');
+    return a.name.localeCompare(b.name);
+  });
+  return result;
+}
+
+function renderAll() {
+  const results = filterAndSort();
+  document.getElementById('header-count').textContent = `${contacts.length} contacts`;
+  const noRes = document.getElementById('no-results');
+  if (results.length === 0) {
+    noRes.style.display = 'block';
+    document.getElementById('view-grid').style.display = 'none';
+    document.getElementById('view-table').style.display = 'none';
+    return;
+  }
+  noRes.style.display = 'none';
+  if (currentView === 'grid') {
+    document.getElementById('view-grid').style.display = 'grid';
+    document.getElementById('view-table').style.display = 'none';
+    renderGrid(results);
+  } else {
+    document.getElementById('view-grid').style.display = 'none';
+    document.getElementById('view-table').style.display = 'block';
+    renderTable(results);
+  }
+}
+
+function renderGrid(results) {
+  const grid = document.getElementById('view-grid');
+  grid.innerHTML = results.map(c => {
+    const ic = getIndustryClass(c.industry);
+    const emails = (c.emails||[]).filter(e=>e&&e!=='*linkedin only*');
+    const email = emails.map(e=>`<div class="info-row"><span class="info-label">Email</span><span class="info-val"><a href="mailto:${escHtml(e)}">${escHtml(e)}</a></span></div>`).join('');
+    const phones = (c.phones||[]).filter(p=>p&&!['*linkedin only*','WhatsApp','Lost his #'].includes(p));
+    const phone = phones.map(p=>`<div class="info-row"><span class="info-label">Phone</span><span class="info-val"><a href="tel:${escHtml(p)}">${escHtml(p)}</a></span></div>`).join('');
+    const age = c.age ? `<div class="info-row"><span class="info-label">Age</span><span class="info-val">${c.age}</span></div>` : '';
+    const last = c.last ? `<div class="info-row"><span class="info-label">Last</span><span class="info-val last-contact-chip">${escHtml(c.last)}</span></div>` : '';
+    const upcoming = c.upcoming ? `<div class="upcoming-box"><div class="box-label">&#128197; Upcoming</div>${escHtml(c.upcoming)}</div>` : '';
+    const todo = c.todo ? `<div class="todo-box"><div class="box-label">&#9989; To-Do</div>${escHtml(c.todo)}</div>` : '';
+    const notes = c.notes ? `<div class="notes-box"><div class="box-label">&#128203; Notes</div>${escHtml(c.notes)}</div>` : '';
+    const calldoc = c.calldoc ? `<div class="calldoc-box"><div class="box-label">&#128279; Call Notes</div><a href="${escHtml(c.calldoc)}" target="_blank" rel="noopener">Open Google Doc &#8599;</a></div>` : '';
+    const linkedinBtn = c.linkedin ? `<a class="linkedin-link" href="${escHtml(c.linkedin)}" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.37h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.6z"/></svg> LinkedIn &#8599;</a>` : '';
+    const avatarContent = c.photo ? `<img src="${escHtml(c.photo)}" onerror="this.parentElement.textContent='${initials(c.name)}'">` : initials(c.name);
+    return `
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar av-${ic}">${avatarContent}</div>
+        <div class="card-title">
+          <h3>${escHtml(c.name)}</h3>
+          <div class="firm">${escHtml(c.firm||'')}${c.title ? ` · <em>${escHtml(c.title)}</em>` : ''}</div>
+        </div>
+        ${c.industry ? `<span class="industry-tag tag-${ic}">${escHtml(c.industry)}</span>` : ''}
+      </div>
+      <div class="card-body">${email}${phone}${age}${last}${linkedinBtn}${upcoming}${todo}${notes}${calldoc}</div>
+      <div class="card-footer">
+        <button class="btn btn-ghost btn-sm" onclick="openEditModal(${c.id})">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteContact(${c.id})">Delete</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderTable(results) {
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = results.map(c => {
+    const ic = getIndustryClass(c.industry);
+    const emailsArr = (c.emails||[]).filter(e=>e&&e!=='*linkedin only*');
+    const email = emailsArr.length ? emailsArr.map(e=>`<a href="mailto:${escHtml(e)}">${escHtml(e)}</a>`).join('<br>') : '—';
+    const phonesArr = (c.phones||[]).filter(Boolean);
+    const phoneCell = phonesArr.length ? phonesArr.join('<br>') : '—';
+    const upcoming = c.upcoming ? `<span class="pill-inline pill-upcoming">${escHtml(c.upcoming.substring(0,60))}${c.upcoming.length>60?'…':''}</span>` : '';
+    const todo = c.todo ? `<span class="pill-inline pill-todo">${escHtml(c.todo.substring(0,60))}${c.todo.length>60?'…':''}</span>` : '';
+    const notes = c.notes ? `<span class="pill-inline pill-notes">${escHtml(c.notes.substring(0,60))}${c.notes.length>60?'…':''}</span>` : '';
+    return `<tr>
+      <td><strong>${escHtml(c.name)}</strong></td>
+      <td>${escHtml(c.firm||'')}</td>
+      <td style="font-size:0.82rem;color:#555">${escHtml(c.title||'')}</td>
+      <td>${c.industry ? `<span class="industry-tag tag-${ic}">${escHtml(c.industry)}</span>` : ''}</td>
+      <td style="font-size:0.82rem">${email}</td>
+      <td style="font-size:0.82rem">${phoneCell}</td>
+      <td style="font-size:0.82rem;white-space:nowrap">${escHtml(c.last||'')}</td>
+      <td class="notes-td">${upcoming}</td>
+      <td class="notes-td">${todo}${notes ? '<br>'+notes : ''}</td>
+      <td style="font-size:0.82rem">${c.calldoc ? `<a href="${escHtml(c.calldoc)}" target="_blank" rel="noopener" class="pill-inline pill-calldoc">&#128279; Doc &#8599;</a>` : ''}${c.linkedin ? ` <a href="${escHtml(c.linkedin)}" target="_blank" rel="noopener" class="linkedin-link" style="display:inline-flex;margin-top:0">in &#8599;</a>` : ''}</td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-ghost btn-sm" onclick="openEditModal(${c.id})">Edit</button>
+        <button class="btn btn-danger btn-sm" style="margin-left:4px" onclick="deleteContact(${c.id})">Del</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function addMultiInput(listId, type, placeholder, value='') {
+  const list = document.getElementById(listId);
+  const row = document.createElement('div');
+  row.className = 'multi-input-row';
+  row.innerHTML = `<input type="${type}" placeholder="${placeholder}"><button type="button" class="remove-input-btn" onclick="this.parentElement.remove()">✕</button>`;
+  row.querySelector('input').value = value;
+  list.appendChild(row);
+}
+
+function getMultiValues(listId) {
+  return Array.from(document.querySelectorAll(`#${listId} .multi-input-row input`))
+    .map(i => i.value.trim()).filter(v => v);
+}
+
+function setMultiValues(listId, type, placeholder, values) {
+  const list = document.getElementById(listId);
+  list.innerHTML = '';
+  (values && values.length ? values : ['']).forEach(v => addMultiInput(listId, type, placeholder, v));
+}
+
+function setView(v) {
+  currentView = v;
+  document.getElementById('vbtn-grid').classList.toggle('active', v==='grid');
+  document.getElementById('vbtn-table').classList.toggle('active', v==='table');
+  renderAll();
+}
+
+// ── Add / Edit Modal ──────────────────────────────────────────────────────────
+function openAddModal() {
+  editId = null;
+  document.getElementById('modal-title').textContent = 'Add Contact';
+  ['name','firm','title','age','last','upcoming','todo','notes','calldoc','linkedin','photo'].forEach(f =>
+    document.getElementById('f-'+f).value = '');
+  setMultiValues('f-emails-list','email','email@example.com',[]);
+  setMultiValues('f-phones-list','tel','xxx-xxx-xxxx',[]);
+  document.getElementById('f-industry').value = '';
+  const t = document.getElementById('f-photo-thumb');
+  t.src = ''; t.classList.remove('visible');
+  document.getElementById('modal').classList.add('open');
+}
+
+function openEditModal(id) {
+  const c = contacts.find(x => x.id === id);
+  if (!c) return;
+  editId = id;
+  document.getElementById('modal-title').textContent = 'Edit — ' + c.name;
+  document.getElementById('f-name').value = c.name || '';
+  setMultiValues('f-emails-list','email','email@example.com', c.emails||[]);
+  setMultiValues('f-phones-list','tel','xxx-xxx-xxxx', c.phones||[]);
+  document.getElementById('f-firm').value = c.firm || '';
+  document.getElementById('f-title').value = c.title || '';
+  document.getElementById('f-age').value = c.age || '';
+  document.getElementById('f-industry').value = c.industry || '';
+  document.getElementById('f-last').value = c.last || '';
+  document.getElementById('f-upcoming').value = c.upcoming || '';
+  document.getElementById('f-todo').value = c.todo || '';
+  document.getElementById('f-notes').value = c.notes || '';
+  document.getElementById('f-calldoc').value = c.calldoc || '';
+  document.getElementById('f-linkedin').value = c.linkedin || '';
+  document.getElementById('f-photo').value = c.photo || '';
+  const pt = document.getElementById('f-photo-thumb');
+  if (c.photo) { pt.src = c.photo; pt.classList.add('visible'); } else { pt.src=''; pt.classList.remove('visible'); }
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  editId = null;
+}
+
+async function saveContact() {
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) { alert('Name is required.'); return; }
+  const data = {
+    id: editId || undefined,
+    name,
+    emails: getMultiValues('f-emails-list'),
+    phones: getMultiValues('f-phones-list'),
+    firm: document.getElementById('f-firm').value.trim(),
+    title: document.getElementById('f-title').value.trim(),
+    age: document.getElementById('f-age').value.trim(),
+    industry: document.getElementById('f-industry').value,
+    last: document.getElementById('f-last').value.trim(),
+    upcoming: document.getElementById('f-upcoming').value.trim(),
+    todo: document.getElementById('f-todo').value.trim(),
+    notes: document.getElementById('f-notes').value.trim(),
+    calldoc: document.getElementById('f-calldoc').value.trim(),
+    linkedin: document.getElementById('f-linkedin').value.trim(),
+    photo: document.getElementById('f-photo').value.trim(),
+  };
+  const saved = await _upsertContact(data);
+  if (editId !== null) {
+    const idx = contacts.findIndex(c => c.id === editId);
+    if (idx >= 0) contacts[idx] = saved;
+  } else {
+    contacts.push(saved);
+  }
+  closeModal(); populateFilters(); renderAll();
+}
+
+async function deleteContact(id) {
+  const c = contacts.find(x => x.id === id);
+  if (!c) return;
+  if (!confirm(`Remove ${c.name} from your network?`)) return;
+  await _deleteContact(id);
+  contacts = contacts.filter(x => x.id !== id);
+  renderAll();
+}
+
+// ── Review Mode ───────────────────────────────────────────────────────────────
+function startReview() {
+  reviewQueue = [...contacts];
+  reviewIdx = 0;
+  loadReviewContact();
+  document.getElementById('review-overlay').classList.add('open');
+}
+
+function loadReviewContact() {
+  if (reviewIdx >= reviewQueue.length) { finishReview(); return; }
+  const c = reviewQueue[reviewIdx];
+  const ic = getIndustryClass(c.industry);
+  const total = reviewQueue.length;
+  document.getElementById('rev-progress').textContent = `Contact ${reviewIdx+1} of ${total}`;
+  document.getElementById('rev-bar').style.width = ((reviewIdx / total) * 100) + '%';
+  const revAv = document.getElementById('rev-avatar');
+  revAv.className = 'review-avatar av-' + ic;
+  if (c.photo) {
+    revAv.innerHTML = `<img src="${escHtml(c.photo)}" onerror="this.parentElement.textContent='${initials(c.name)}'">`;
+  } else {
+    revAv.textContent = initials(c.name);
+  }
+  document.getElementById('rev-name').textContent = c.name;
+  document.getElementById('rev-firm').textContent = c.firm || 'No firm on file';
+  document.getElementById('rev-last').textContent = c.last ? 'Last contact: ' + c.last : 'No contact date on file';
+  document.getElementById('rev-f-firm').value = c.firm || '';
+  document.getElementById('rev-f-title').value = c.title || '';
+  const emailVals = (c.emails && c.emails.length) ? c.emails : [];
+  const phoneVals = (c.phones && c.phones.length) ? c.phones : [];
+  setMultiValues('rev-emails-list','email','email@example.com', emailVals);
+  setMultiValues('rev-phones-list','tel','xxx-xxx-xxxx', phoneVals);
+  document.getElementById('rev-f-industry').value = c.industry || '';
+  document.getElementById('rev-f-last').value = c.last || '';
+  document.getElementById('rev-f-upcoming').value = c.upcoming || '';
+  document.getElementById('rev-f-todo').value = c.todo || '';
+  document.getElementById('rev-f-notes').value = c.notes || '';
+  document.getElementById('rev-f-calldoc').value = c.calldoc || '';
+  document.getElementById('rev-f-linkedin').value = c.linkedin || '';
+  document.getElementById('rev-f-photo').value = c.photo || '';
+  const rpt = document.getElementById('rev-photo-thumb');
+  if (c.photo) { rpt.src = c.photo; rpt.classList.add('visible'); } else { rpt.src=''; rpt.classList.remove('visible'); }
+  const isLast = reviewIdx === reviewQueue.length - 1;
+  document.getElementById('rev-next-btn').textContent = isLast ? 'Save & Finish ✓' : 'Save & Next →';
+}
+
+async function reviewSaveNext() {
+  const c = reviewQueue[reviewIdx];
+  const updated = {
+    ...c,
+    firm: document.getElementById('rev-f-firm').value.trim(),
+    title: document.getElementById('rev-f-title').value.trim(),
+    emails: getMultiValues('rev-emails-list'),
+    phones: getMultiValues('rev-phones-list'),
+    industry: document.getElementById('rev-f-industry').value,
+    last: document.getElementById('rev-f-last').value.trim(),
+    upcoming: document.getElementById('rev-f-upcoming').value.trim(),
+    todo: document.getElementById('rev-f-todo').value.trim(),
+    notes: document.getElementById('rev-f-notes').value.trim(),
+    calldoc: document.getElementById('rev-f-calldoc').value.trim(),
+    linkedin: document.getElementById('rev-f-linkedin').value.trim(),
+    photo: document.getElementById('rev-f-photo').value.trim(),
+  };
+  const saved = await _upsertContact(updated);
+  const idx = contacts.findIndex(x => x.id === c.id);
+  if (idx >= 0) contacts[idx] = saved;
+  reviewQueue[reviewIdx] = saved;
+  reviewIdx++;
+  if (reviewIdx >= reviewQueue.length) { finishReview(); return; }
+  loadReviewContact();
+}
+
+function reviewSkip() {
+  reviewIdx++;
+  if (reviewIdx >= reviewQueue.length) { finishReview(); return; }
+  loadReviewContact();
+}
+
+function reviewPrev() {
+  if (reviewIdx === 0) return;
+  reviewIdx--;
+  loadReviewContact();
+}
+
+function finishReview() {
+  document.getElementById('rev-bar').style.width = '100%';
+  document.getElementById('review-overlay').classList.remove('open');
+  populateFilters(); renderAll();
+  setTimeout(() => alert('Review complete! All updates saved to the cloud.'), 100);
+}
+
+function closeReview() {
+  if (reviewIdx > 0 && !confirm('Exit review? Progress so far has been saved.')) return;
+  document.getElementById('review-overlay').classList.remove('open');
+  populateFilters(); renderAll();
+}
+
+// ── Action Items ──────────────────────────────────────────────────────────────
+function openActionItems() {
+  const upcoming = contacts.filter(c => c.upcoming && c.upcoming.trim());
+  const todos    = contacts.filter(c => c.todo && c.todo.trim() && !(c.upcoming && c.upcoming.trim()));
+  const outreach = contacts.filter(c => !c.upcoming?.trim() && !c.todo?.trim());
+  function card(c) {
+    const ini = c.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+    const avatar = c.photo ? `<img src="${c.photo}" class="avatar-img" alt="">` : `<div class="avatar-initials">${ini}</div>`;
+    const emailList = (c.emails||[]).filter(Boolean);
+    const phoneList = (c.phones||[]).filter(Boolean);
+    const contactLine = [...emailList, ...phoneList].join(' · ');
+    return `<div class="ai-card">
+      <div class="ai-card-left">${avatar}</div>
+      <div class="ai-card-body">
+        <div class="ai-card-name">${escHtml(c.name)}</div>
+        <div class="ai-card-meta">${escHtml(c.firm||'')}${c.title ? ' · '+escHtml(c.title) : ''}</div>
+        ${contactLine ? `<div class="ai-card-contact">${escHtml(contactLine)}</div>` : ''}
+        ${c.upcoming ? `<div class="ai-tag ai-tag-upcoming">📅 ${escHtml(c.upcoming)}</div>` : ''}
+        ${c.todo     ? `<div class="ai-tag ai-tag-todo">✅ ${escHtml(c.todo)}</div>` : ''}
+        ${c.last     ? `<div class="ai-tag ai-tag-last">🕐 Last: ${escHtml(c.last)}</div>` : ''}
+      </div>
+      <button class="ai-card-edit" onclick="closeActionItems();openEditModal(${c.id})">Edit</button>
+    </div>`;
+  }
+  function section(title, emoji, items, emptyMsg) {
+    return `<div class="ai-section">
+      <div class="ai-section-header">${emoji} ${title} <span class="ai-count">${items.length}</span></div>
+      ${items.length ? items.map(card).join('') : `<div class="ai-empty">${emptyMsg}</div>`}
+    </div>`;
+  }
+  document.getElementById('ai-body').innerHTML =
+    section('Upcoming Calls & Meetings','📅',upcoming,'No upcoming calls scheduled.') +
+    section('To-Do Items','✅',todos,'No outstanding to-dos.') +
+    section('Reach Out To','📬',outreach,'Everyone has been actioned!');
+  document.getElementById('action-items-overlay').classList.add('open');
+}
+
+function closeActionItems() {
+  document.getElementById('action-items-overlay').classList.remove('open');
+}
+
+// ── Export ────────────────────────────────────────────────────────────────────
+function exportCSV() {
+  const headers = ['Name','Emails','Phones','Firm','Title','Age','Industry','Last Contacted','Upcoming','To-Do','Notes','Call Notes Doc','LinkedIn'];
+  const rows = contacts.map(c => [c.name,(c.emails||[]).join('; '),(c.phones||[]).join('; '),c.firm,c.title||'',c.age,c.industry,c.last,c.upcoming,c.todo,c.notes,c.calldoc||'',c.linkedin||'']
+    .map(v => `"${(v||'').replace(/"/g,'""')}"`).join(','));
+  const csv = [headers.join(','), ...rows].join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'Brandt_Network_' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+}
+
+function handlePhotoUpload(input, thumbId, photoFieldId) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const dataUrl = e.target.result;
+    document.getElementById(photoFieldId).value = dataUrl;
+    const thumb = document.getElementById(thumbId);
+    thumb.src = dataUrl; thumb.classList.add('visible');
+  };
+  reader.readAsDataURL(file);
+}
+
+function previewPhotoUrl(input, thumbId) {
+  const thumb = document.getElementById(thumbId);
+  const url = input.value.trim();
+  if (url) { thumb.src = url; thumb.classList.add('visible'); }
+  else { thumb.src = ''; thumb.classList.remove('visible'); }
+}
+
+document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.getElementById('review-overlay').addEventListener('click', function(e) { if (e.target === this) closeReview(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.getElementById('login-email').addEventListener('keydown', e => { if (e.key === 'Enter') signIn(); });
+document.getElementById('login-password').addEventListener('keydown', e => { if (e.key === 'Enter') signIn(); });
+</script>
+</body>
+</html>
