@@ -1,0 +1,1125 @@
+[
+  {
+    "id": 1,
+    "name": "Rick Donovan",
+    "email": "richard.t.donovan@gmail.com",
+    "phone": "",
+    "firm": "Morgan Stanley",
+    "age": "38",
+    "industry": "Wealth Management",
+    "last": "Emailed on 10/21/24 - no response",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "title": "Senior VP",
+    "emails": [
+      "richard.t.donovan@gmail.com"
+    ],
+    "phones": [
+      "732-996-2146"
+    ],
+    "calldoc": "https://docs.google.com/document/d/1Sjs2W_T2az3OHu1_Ok0PGuVXa7v96GcJwY6KxtVATbI/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/rickdonovan/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4D03AQGUNPbHHoxD6A/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1656598892882?e=1776297600&v=beta&t=q1p2RUk2-GdmgOhMl02M3fiX_lgNPl8tdg2xBydARc4"
+  },
+  {
+    "id": 2,
+    "name": "Jeff Chatlos",
+    "email": "",
+    "phone": "617-694-2284",
+    "firm": "Bank of America (Private Bank)",
+    "age": "50+",
+    "industry": "Finance",
+    "last": "Text convo 6/11/24",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "https://docs.google.com/document/d/1HD9wakbGMk1cAzBzF-jNFeZfxA-H5WGidGLcxxQIzTc/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/jeff-chatlos-11595b12/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4D03AQECSX1ZDG41DA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1613159230178?e=1776297600&v=beta&t=w4qqofKYEHu6XVeMm1p5paBhO6RBgb1Vn8xXK2aeWfk",
+    "title": "Vice President, Supervision Manager",
+    "emails": [],
+    "phones": [
+      "617-694-2284"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Nancy Bruns",
+    "email": "",
+    "phone": "828-226-1830",
+    "firm": "J.Q. Dickinson Saltworks",
+    "age": "60+",
+    "industry": "Entrepreneurship",
+    "last": "Call on 6/5/24",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "https://docs.google.com/document/d/1WB86oZersk01rOyltN8EyGMF4ApL3YOrl8IFBchz4zk/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/nancy-bruns-10355416/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4D03AQENJWo7Og5yKQ/profile-displayphoto-shrink_400_400/B4DZRv0AmXHkAg-/0/1737042692943?e=1776297600&v=beta&t=nfdJ0LbEsaFoo-l8wXCIhepigslLMIzh-20v1-3JEsQ",
+    "title": "Co-Founder and CEO",
+    "emails": [],
+    "phones": [
+      "828-226-1830"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "David Bayuk",
+    "email": "",
+    "phone": "914-924-0931",
+    "firm": "Accenture",
+    "age": "40+",
+    "industry": "Marketing",
+    "last": "Call on 3/23/26",
+    "upcoming": "",
+    "todo": "Follow up with him on 4/9/2026",
+    "notes": "He is going to put me in touch with his contacts",
+    "calldoc": "https://docs.google.com/document/d/1JLadWG1fVuXtFSYJPIQxG0w5QA86zcNR7jn9viEsZxg/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/bayukdavid/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFo9hZACu3VFg/profile-displayphoto-shrink_400_400/B4EZbqWlutHYAk-/0/1747688512904?e=1776297600&v=beta&t=cHdBsCTieeyEESqzYUo02-qfToOeGpTH-Zp_6vUMgI8",
+    "title": "Senior Marketing Executive",
+    "emails": [],
+    "phones": [
+      "914-924-0931"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Matthew D'Antoni",
+    "email": "",
+    "phone": "",
+    "firm": "J.P. Morgan (Private Bank)",
+    "age": "23",
+    "industry": "Finance",
+    "last": "",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/matthew-d-antoni-ab616b1b6/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4E03AQH3kyaoVfj9pQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1638233376303?e=1776297600&v=beta&t=kFtzL5lFCL7flTHdJEmOna_xcjsoGj8S5Ca-gGTs2LM",
+    "title": "Associate",
+    "emails": [],
+    "phones": [
+      "973-738-7435"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Ken Freeman",
+    "email": "kfreeman@bu.edu",
+    "phone": "",
+    "firm": "Quest Diagnostics",
+    "age": "60+",
+    "industry": "Entrepreneurship",
+    "last": "Email convo on 10/17/2025",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/kenneth-freeman-b727876a/",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyHYsyPDp6rwaECoHg0YugarDkDjV7_g-vGBYZ_VgZ22pIDD69H22E38pfXro87OZDAAsj0QJiyz3_7ldSFPGg60-SoiQayHf6bsgIji7U&s=10",
+    "title": "CEO of Quest Diagnostics / Dean Emeritus @ Boston University",
+    "emails": [
+      "kfreeman@bu.edu"
+    ],
+    "phones": []
+  },
+  {
+    "id": 7,
+    "name": "Jackson Greeley",
+    "email": "jackson.greeley@gs.com",
+    "phone": "617-620-7763",
+    "firm": "Goldman Sachs",
+    "age": "25",
+    "industry": "Asset Management",
+    "last": "Text convo on 10/9/2024 -- No response",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/jackson-greeley-8a9480175/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQE1uY02nmVtnw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1673492385566?e=1776297600&v=beta&t=lrF_H-PbWc3GwM1tULQzYhcbdjeer-X3xmdPv3j-LA4",
+    "title": "Associate",
+    "emails": [
+      "jackson.greeley@gs.com"
+    ],
+    "phones": [
+      "617-620-7763"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Max Chandler",
+    "email": "",
+    "phone": "203-692-5789",
+    "firm": "Huron",
+    "age": "23",
+    "industry": "Consulting",
+    "last": "Call on 6/5/2024",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "https://docs.google.com/document/d/1Jpk-JAg5r5LLw6zvZf2JgLzIG6g8pXwhWTWB6Q8oUzM/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/max-chandler-841402190/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQE1j296CCB4Cw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1673548753609?e=1776297600&v=beta&t=uJR9IxSa3vCoZtR1S191MMo3LHF_RENLxDr6sXIaMtw",
+    "title": "Associate - Data Analytics",
+    "emails": [],
+    "phones": [
+      "203-692-5789"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Michael Constantinides",
+    "email": "mgconstant@outlook.com",
+    "phone": "WhatsApp",
+    "firm": "Accenture",
+    "age": "40+",
+    "industry": "Consulting",
+    "last": "Text convo on 1/17/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/michael-constantinides-72507117/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4E03AQHuzkUVy3WRXw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1570193803475?e=1776297600&v=beta&t=IlrvVu7DA7-Oyxj9gzjpuIlRY9dYLzmASevT3X6t0ac",
+    "title": "Senior Manager - Relationship Management",
+    "emails": [
+      "mgconstant@outlook.com"
+    ],
+    "phones": [
+      "WhatsApp: +49 172-962-4333"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "William Pfister",
+    "email": "William.Pfister@mizuhogroup.com",
+    "phone": "(203) 610-0212",
+    "firm": "Leerink Partners",
+    "age": "30",
+    "industry": "Investment Banking",
+    "last": "Emailed on 1/26/2026 -- No response",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Never answered last email",
+    "calldoc": "https://docs.google.com/document/d/1X6hjg8faSnAN7M9qk8jVuIUdOQBglKbOc5G-dMo-_v0/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/william-pfister-cfa-28891399/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4E03AQEOYXzcrZBxYQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1516923417325?e=1776297600&v=beta&t=zxGMf39uUoghbo7J_NoeET5LFabzwJNs9309Ax7hZ0s",
+    "title": "Associate",
+    "emails": [
+      "william.pfister@leerink.com"
+    ],
+    "phones": [
+      "(203) 610-0212"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Shawn O'Neill",
+    "email": "",
+    "phone": "617-331-2692",
+    "firm": "Merrill Lynch",
+    "age": "50",
+    "industry": "Wealth Management",
+    "last": "Text and referred on 6/4/2024",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "",
+    "linkedin": "",
+    "photo": "",
+    "title": "",
+    "emails": [
+      "shawn.p.oneill@ml.com"
+    ],
+    "phones": [
+      "617-331-2692"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Evan Berkely",
+    "email": "evanbrettberkley@gmail.com",
+    "phone": "917-597-2258",
+    "firm": "Arize",
+    "age": "",
+    "industry": "Entrepreneurship",
+    "last": "Text often",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Put me in contact with Leah Wahba (CEO of ARIZE)",
+    "calldoc": "https://docs.google.com/document/d/1HXjEwKXrb3lILleQK7w_zijwbbrk9dYkE4UE6KyGrOE/edit?tab=t.0#heading=h.z4csaaax003m",
+    "linkedin": "https://www.linkedin.com/in/evan-berkley-22191114/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4E03AQEy6bXTtBY8YA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1531768796887?e=1776297600&v=beta&t=9QI7JaZHvX-MZtqRipxRcVqR4V8btKSezyWuT7p1ggY",
+    "title": "President",
+    "emails": [
+      "evanbrettberkley@gmail.com"
+    ],
+    "phones": [
+      "917-597-2258"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Bryce Turkheimer",
+    "email": "bturkheimer@deloitte.com",
+    "phone": "",
+    "firm": "Deloitte",
+    "age": "30",
+    "industry": "Consulting",
+    "last": "Email convo on 11/11/2024",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Told me I was waitlisted at Deloitte for summer internship in Harrisburg going into senior year",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/bryce-turkheimer-b6b633133/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQGKrNT52t2YAA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1695601432325?e=1776297600&v=beta&t=bYk5By6Sy78Te8PTZIpdI2IA0Vy5823iVzFeWQDQaT8",
+    "title": "Campus Recruiting Specialist",
+    "emails": [
+      "bturkheimer@deloitte.com"
+    ],
+    "phones": [
+      "215-837-6881"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Michael Molinet",
+    "email": "",
+    "phone": "651-788-6176",
+    "firm": "Branch and Thena",
+    "age": "30",
+    "industry": "Entrepreneurship",
+    "last": "Call on 4/1/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Encourages me to build something in Claude",
+    "calldoc": "https://docs.google.com/document/d/1tnHYiXA3reMFU427vBmoXlG5ibwBDSrUTy91QoWkq-Y/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/mikemolinet/",
+    "photo": "https://media.licdn.com/dms/image/v2/D5603AQH9PI6moFiR4Q/profile-displayphoto-scale_400_400/B56Zy05gvDIoAg-/0/1772561505100?e=1776297600&v=beta&t=qbwPI5ad4Ojc1U11nsA6xzwu1fYSfZ7HzixCAzPVh-s",
+    "title": "Co-Founder / CEO / Serial Entrepreneur",
+    "emails": [
+      "Michael.molinet@gmail.com"
+    ],
+    "phones": [
+      "651-788-6176"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Brad Langer",
+    "email": "",
+    "phone": "914-525-8072",
+    "firm": "Brown Brothers Harriman & Co.",
+    "age": "50+",
+    "industry": "Private Equity",
+    "last": "Call on 1/16/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Talked about how to break into PE/VC.\nRecommended looking at Investment banks that are not in NYC",
+    "calldoc": "https://docs.google.com/document/d/1CSeiLNGXPyNO0_YpJATYtSqsVXApihEp3OxKrvucSLc/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/brad-langer-14406a139/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4D03AQFdSU5ALCZ1hA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517540019364?e=1776297600&v=beta&t=f20Ka1shDOAd6jnYLrRU8-IH2IFFwGCN4luDeaThxe4",
+    "title": "Partner and Co-Manager of BBHCP Private Equity",
+    "emails": [],
+    "phones": [
+      "914-525-8072"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Matt Hornbuckle",
+    "email": "matthew.r.horn@gmail.com",
+    "phone": "",
+    "firm": "Stantt / Building FiveStems",
+    "age": "30",
+    "industry": "Entrepreneurship",
+    "last": "Zoom call on 7/25/24 / Caught up during Marketing Management Class where we developed a business plan for FiveStems throughout the semester",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "https://docs.google.com/document/d/1_5qkZs-DJSm6jS72pSDXwgKtipRTSBvAWxKbRy7my0A/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/matt-hornbuckle-64347122/",
+    "photo": "https://media.licdn.com/dms/image/v2/D5603AQHgwYrXWQT6pQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1680816091277?e=1776297600&v=beta&t=KqBFZhV0kZNNvjPGxMbzElqnQCwvW4FKkU1mWcETVbg",
+    "title": "Ex-Co-Founder and CEO / Now Board Member / CEO of FiveStems",
+    "emails": [
+      "matthew.r.horn@gmail.com"
+    ],
+    "phones": []
+  },
+  {
+    "id": 17,
+    "name": "Devin Cooch",
+    "email": "devincooch@gmail.com",
+    "phone": "",
+    "firm": "Eaton Vance",
+    "age": "30",
+    "industry": "Finance",
+    "last": "Zoom call on 8/14/24 / Emailed him on 6/1/2025 -- No response",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "https://docs.google.com/document/d/18rHA-UO_dGnWWaHrsgKUckGlwGC0pJKGKe-JTbNyArs/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/devincooch/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4D03AQEckbgfeqihow/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1552959729421?e=1776297600&v=beta&t=YlNde6JftH8QNI9balKJAAtQGbH5LPjOkKTzwkX-t5g",
+    "title": "VP, Portfolio Manager",
+    "emails": [
+      "devincooch@gmail.com"
+    ],
+    "phones": []
+  },
+  {
+    "id": 18,
+    "name": "Dominick Bizzarro",
+    "email": "dominick@innovatorswithin.com",
+    "phone": "518-641-8576",
+    "firm": "Career Advice",
+    "age": "60+",
+    "industry": "Consulting",
+    "last": "Zoom call on 8/19/24",
+    "upcoming": "",
+    "todo": "",
+    "notes": "\"Go for EcoMark. It's your passion.\"",
+    "calldoc": "https://docs.google.com/document/d/1idA5xsaJ2-za67AiRZnPu0_w-kdjMBSAwobKRWaOez4/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/dominickbizzarro/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQF_-RwUbuoatg/profile-displayphoto-shrink_100_100/B4EZR6zYwJGgAU-/0/1737227079055?e=1776297600&v=beta&t=De5kSv4TBo459UjolnB2u9eoPSrAcJh_fNND0VOMa7o",
+    "title": "Executive Catalyst",
+    "emails": [
+      "dominick@innovatorswithin.com"
+    ],
+    "phones": [
+      "518-641-8576"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Eric Guja",
+    "email": "eric.guja@gmail.com",
+    "phone": "",
+    "firm": "Bridgepoint Group (Newbury Bridgepoint)",
+    "age": "40",
+    "industry": "Asset Management",
+    "last": "Zoom call on 8/23/24",
+    "upcoming": "",
+    "todo": "Follow up with him next week. Check how he is doing in his new role",
+    "notes": "",
+    "calldoc": "https://docs.google.com/document/d/1auCWV6P5noMlwmLm1LnR7QLxCJ-RB3mV5t6P0e3uMGM/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/eric-guja-cfa-482b24b/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQGtm352Y8Qm2w/profile-displayphoto-scale_100_100/B4EZy.T73jIEAg-/0/1772719426432?e=1776297600&v=beta&t=Q-uqpjCoJX1kl_cPQNul54cs5SnpiaGLLXKqyCZHGYM",
+    "title": "Managing Director",
+    "emails": [
+      "eric.guja@gmail.com"
+    ],
+    "phones": []
+  },
+  {
+    "id": 20,
+    "name": "Emily Williamson",
+    "email": "",
+    "phone": "973-665-4197",
+    "firm": "HW Anderson",
+    "age": "24",
+    "industry": "Consulting",
+    "last": "Call on 2/3/2026 / Met her at Super Day on 3/4/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "https://docs.google.com/document/d/1iLnAoVAAaOczL9QZ7-mlj0ATcHGKIA7qkT-yIbdHfe4/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/emilywilliamsonn/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQECZqAMFA2P8w/profile-displayphoto-scale_100_100/B4EZmQPpLEIoAc-/0/1759061649736?e=1776297600&v=beta&t=b2Uy69Ufw14u_IEBuyP1YRTaJY7sD4RFGYbeMSjDR7w",
+    "title": "Associate Consultant",
+    "emails": [],
+    "phones": [
+      "973-665-4197"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Isabelle DeZenzo",
+    "email": "",
+    "phone": "917-757-4016",
+    "firm": "Tubi",
+    "age": "28",
+    "industry": "Marketing",
+    "last": "Call on 2/11/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "https://docs.google.com/document/d/1vSio-p6xJ3DEoWL00UwM4hikT-HYpXuTX4X7LG02mZE/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/isabelle-dezenzo-000202181/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFvPXWdmPjpYw/profile-displayphoto-scale_400_400/B4EZh2qrXmGcAk-/0/1754337557137?e=1776297600&v=beta&t=zOoU1kypSBw_BMAL7BroSmhbYA6E5GB6WRkpKyHYQB4",
+    "title": "Media Strategist",
+    "emails": [],
+    "phones": [
+      "917-757-4016"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Sean Wheatley",
+    "email": "",
+    "phone": "908-403-4886",
+    "firm": "MLB",
+    "age": "32",
+    "industry": "Other",
+    "last": "Call on 2/11/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "On-Field Analytics Director for MLB",
+    "calldoc": "https://docs.google.com/document/d/1zLyknuoGCiwewdGnvW8WeD7OaS_0zOw7wPvWccU4DZU/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/sean-wheatley-02169664/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQGJl485MH-HkA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1690386263892?e=1776297600&v=beta&t=RqHcKq28SMPQ8qRmsuBiUWu-0WnYcCjbPYO6wR_c_4o",
+    "title": "Director, On-Field Strategy",
+    "emails": [],
+    "phones": [
+      "908-403-4886"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Claire McMahon",
+    "email": "claire.mcmahon@pwc.com",
+    "phone": "973-567-2920",
+    "firm": "PwC",
+    "age": "27",
+    "industry": "Consulting",
+    "last": "Call on 2/11/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Investigations and forensics",
+    "calldoc": "https://docs.google.com/document/d/17TgMyc8Ax1B1xc8XSeB0uqoCvgWqr4YcPX_SqRuY-Kc/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/clairemcmahon11/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQGnPJmG9rJXgA/profile-displayphoto-scale_400_400/B4EZyXjBibJgAg-/0/1772069067649?e=1776297600&v=beta&t=O2epgna9sT-VcDbLAoSz2wqNSl7skon_Yf4EgNiggs0",
+    "title": "Associate",
+    "emails": [
+      "claire.mcmahon@pwc.com"
+    ],
+    "phones": [
+      "973-567-2920"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Tim Simonds",
+    "email": "tim.simonds@gmail.com",
+    "phone": "",
+    "firm": "PAI Partners and Frontenac",
+    "age": "50+",
+    "industry": "Private Equity",
+    "last": "Call on 2/9/2026 / Gave me advice on whether to accept HW Anderson offer on 3/5/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Was very helpful in terms of making HW Anderson decision.",
+    "calldoc": "https://docs.google.com/document/d/1XGJn9YpvGNYwfFwJLTh-UyoMK7p_bwWRxe_gS6trHFQ/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/tim-simonds-59666a8/",
+    "photo": "https://media.licdn.com/dms/image/v2/D5603AQHyed8OyHtV0Q/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1676253277873?e=1776297600&v=beta&t=6p-STZKVbV4XzIaC-WNqC5DjvMRWDNpto3SLHBEtzhA",
+    "title": "Senior Advisor for PAI / \"CEO1st\" of Frontenac / Board Member of Various Companies",
+    "emails": [
+      "tim.simonds@gmail.com"
+    ],
+    "phones": [
+      "847-571-4214"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Seth Brody",
+    "email": "Seth.Brody@apax.com",
+    "phone": "",
+    "firm": "APAX / Board of Director of Various Companies",
+    "age": "40+",
+    "industry": "Private Equity",
+    "last": "Call on 2/4/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Never put me in contact with anyone. Urged me to build things with Ai, specifically using Bolt",
+    "calldoc": "https://docs.google.com/document/d/1sGuj0NEcaWnCfm3IgSIJZbYdZ_K2HkTI0cgpWzaFioc/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/sethabrody/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQGg8n0DSF_scA/profile-displayphoto-scale_100_100/B4EZvbydntIkAc-/0/1768918998434?e=1776297600&v=beta&t=b9a06LR2d0WmX501Wdn_mPWkQVC5_UC3j190MFptJa4",
+    "title": "Partners, Global Head of Operational Excellence",
+    "emails": [
+      "Seth.Brody@apax.com"
+    ],
+    "phones": []
+  },
+  {
+    "id": 26,
+    "name": "Scott Werneburg",
+    "email": "SWerneburg@freepoint.com",
+    "phone": "203-505-2244",
+    "firm": "Freepoint Commodities",
+    "age": "50",
+    "industry": "Sales and Trading",
+    "last": "Call on 1/15/2026 and follow-up on 2/9/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Acknowledged that entry-level trading roles are bleak now,.\nMentioned he'd reach out to people to see what he finds - when I followed up he had not found anything yet",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/scott-werneburg-0a9425/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4E03AQFFzl3GK1cZdQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1589327564647?e=1776297600&v=beta&t=MxoCqcs7ZBavP5a2y5mUOvls9um-bGdpWJjw_uyZw1I",
+    "title": "Senior Managing Director - Head of Structuring & Principal Investments",
+    "emails": [
+      "SWerneburg@freepoint.com"
+    ],
+    "phones": [
+      "203-505-2244"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Mr. Lefebvre",
+    "email": "",
+    "phone": "617-642-4239",
+    "firm": "Charles River Associates / Venture Launchpad Group",
+    "age": "55+",
+    "industry": "Finance",
+    "last": "Call on 1/28/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Never answered my text about putting me in touch with start-ups he knows",
+    "calldoc": "https://docs.google.com/document/d/1vGEq76vE0EcxEscq6_p7kj250T23rqbnFgjkdK0a5lw/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/curt-lefebvre/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQELvz1X9RBi6Q/profile-displayphoto-scale_100_100/B4EZn2zbCjGUAc-/0/1760782300329?e=1776297600&v=beta&t=Sot6prj68xg10kiLuAKuTA3zuuTsPHcaN9h21vw_l5Q",
+    "title": "VP of Ai / Angel Investor",
+    "emails": [],
+    "phones": [
+      "617-642-4239"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Simon Krohn",
+    "email": "",
+    "phone": "914-714-8068",
+    "firm": "Paycom",
+    "age": "25",
+    "industry": "Sales",
+    "last": "Call on 3/12/2024",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/simon-krohn-040016224/",
+    "photo": "https://media.licdn.com/dms/image/v2/D5635AQHx6G_otGndxQ/profile-framedphoto-shrink_100_100/B56Z0l9Tc4JsAk-/0/1774458321193?e=1775592000&v=beta&t=ezejp5wBF9lfIv0iyt-bqpCG3eZyNDuuguZM_FiaJ8Q",
+    "title": "Account Executive",
+    "emails": [],
+    "phones": [
+      "914-714-8068"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Craig Daily",
+    "email": "cdaily@mlp.com",
+    "phone": "",
+    "firm": "Millennium",
+    "age": "50",
+    "industry": "Asset Management",
+    "last": "Call on 3/6/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Put me in contact with Michael Jordan. Gave resume tips, very honest. Said good things about me to his daughter Morgan.",
+    "calldoc": "https://docs.google.com/document/d/1blU_MLw_3fXYMhvLRZFIyigrHmUC9Zb6eOGmIIMZb6o/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/craig-daily-4a933234/",
+    "photo": "https://media.licdn.com/dms/image/v2/C5603AQGl5MWfn47iKA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1516556719069?e=1776297600&v=beta&t=PJmgS58tDXpvqaPczHY81T0jRbPOtmJ-kPScIaIlsTw",
+    "title": "Senior Risk Advisor - Business and Strategic Development",
+    "emails": [
+      "cdaily@mlp.com"
+    ],
+    "phones": []
+  },
+  {
+    "id": 30,
+    "name": "Justin Choi",
+    "email": "justin.Choi@blackrock.com",
+    "phone": "646-951-2314",
+    "firm": "BlackRock",
+    "age": "29",
+    "industry": "Finance",
+    "last": "Call on 3/25/2026",
+    "upcoming": "Follow up in 3 weeks",
+    "todo": "Follow up with Justin Choi in ~3 weeks",
+    "notes": "He wasn't the most clear in what he works in, but mostly relationship management within portfolios it seems",
+    "calldoc": "https://docs.google.com/document/d/1IOKowz6gd4VQ-HydQ0O-642pX0xqKGwAlw4dqjefh-Q/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/justinhchoi/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4D03AQHQ3_npczpnqA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1595388901846?e=1776297600&v=beta&t=1wb7A1aQC1WRWaYk95i5LeRGPZIaFxUWZXAYXAy0xNY",
+    "title": "Vice President",
+    "emails": [
+      "justin.Choi@blackrock.com"
+    ],
+    "phones": [
+      "646-951-2314"
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Emma Hochman",
+    "email": "",
+    "phone": "914-806-4199",
+    "firm": "VaynerMedia",
+    "age": "28",
+    "industry": "Marketing",
+    "last": "Call on 3/23/2026",
+    "upcoming": "",
+    "todo": "Reach out to the 3 strategy contacts she referred. Stay in touch for VaynerMedia residency program.",
+    "notes": "Very genuine and personable",
+    "calldoc": "https://docs.google.com/document/d/1Mg5Mk8oM4GVj1XdJYqWB--CCY0ElQbXcp4THP3lphfM/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/emma-hochman-664200132/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4D03AQEE_dmRkrFqTw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1630584023364?e=1776297600&v=beta&t=a4Q0yEmU_BqguW5JjWbwueFLWjwBfXmBjxDLnMQ07mg",
+    "title": "Senior Strategist & Post Creative Strategist",
+    "emails": [],
+    "phones": [
+      "914-806-4199"
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Carrie Walczak",
+    "email": "carriewalczak1@gmail.com",
+    "phone": "",
+    "firm": "(Career break)",
+    "age": "",
+    "industry": "Sustainable Finance",
+    "last": "Call on 3/16/2026",
+    "upcoming": "",
+    "todo": "Stay in touch — she sends sustainable finance opportunities over LinkedIn",
+    "notes": "Climate Strategy / Sustainable Finance.\nVery kind person.",
+    "calldoc": "https://docs.google.com/document/d/1XQ9DbUucOKT0yxeh9E2PZHjlfTtliltEQo7p6fl2thc/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/carriewalczak/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQF3gMynljtVJA/profile-displayphoto-shrink_400_400/B4EZbF7CWQHwAk-/0/1747077310797?e=1776297600&v=beta&t=twAsZf8NOwGMc32YQyTsv_NRV2Mmy5W_5k4qgoRV5nM",
+    "title": "Consultant? / Ex-Sustainable Investment Strategist",
+    "emails": [
+      "carriewalczak1@gmail.com"
+    ],
+    "phones": []
+  },
+  {
+    "id": 33,
+    "name": "Jamie Fedorjaka",
+    "email": "",
+    "phone": "",
+    "firm": "Stifel",
+    "age": "25",
+    "industry": "Sales and Trading",
+    "last": "",
+    "upcoming": "Call on 4/3/2026",
+    "todo": "",
+    "notes": "Electronic Trading",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/jamiefedorjaka/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQEuKgui7yApvg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1725333527282?e=1776297600&v=beta&t=g3feVLNSwZsPJgAt5iq3-Y4hIh413TUrodBBSm1P0Sk",
+    "title": "Equity Sales Trader",
+    "emails": [],
+    "phones": [
+      "570-259-4017"
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Bruce Keenan",
+    "email": "",
+    "phone": "(631) 710-8153",
+    "firm": "Stifel",
+    "age": "29",
+    "industry": "Other",
+    "last": "",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Financial Advisor",
+    "calldoc": "https://docs.google.com/document/d/1H54qt1JbQoVK91h3D4vdWfDvynF5ktjLnwEgpD34vHs/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/bruce-keenan-jr-mba-cfp%C2%AE-265b8a167/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4D03AQHy-pPVav787Q/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1643321478338?e=1776297600&v=beta&t=syJJ0bbWjfGgEmMYuq2h87xhqiLZvbAppRsFDWjLWyw",
+    "title": "Associate Vice President",
+    "emails": [],
+    "phones": [
+      "(631) 710-8153"
+    ]
+  },
+  {
+    "id": 35,
+    "name": "RJ Grant",
+    "email": "rgrant@stifel.com",
+    "phone": "",
+    "firm": "Stifel",
+    "age": "45",
+    "industry": "Sales and Trading",
+    "last": "Call on 3/23/2026",
+    "upcoming": "Follow up April 7th to schedule office visit",
+    "todo": "Follow up April 7th — schedule time to come in and shadow traders",
+    "notes": "Recommended I reach out to every Bucknell alum that works at Stifel",
+    "calldoc": "https://docs.google.com/document/d/1Ndc4MaKfLznKmLyrrBoVp0ZeWbcKokb0aK5KoAjoe9w/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/r-j-grant-80a71336/",
+    "photo": "https://media.licdn.com/dms/image/v2/C5603AQHsYukb3SoRHQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516634847432?e=1776297600&v=beta&t=lKfaj7s9IhPiOjkvPCX0R4PMipPOZ4VnMF5UWQ_18wA",
+    "title": "Head of Global Equity Trading",
+    "emails": [
+      "rgrant@stifel.com"
+    ],
+    "phones": []
+  },
+  {
+    "id": 36,
+    "name": "Michael Jordan",
+    "email": "Michael.K.Jordan@mlp.com",
+    "phone": "",
+    "firm": "Millennium",
+    "age": "40",
+    "industry": "Asset Management",
+    "last": "Call on 3/20/2026",
+    "upcoming": "",
+    "todo": "Wait for him to put me in touch with colleagues — follow up if no word",
+    "notes": "His group does not hire right now (only him) but is growing soon",
+    "calldoc": "https://docs.google.com/document/d/1JbO27MBe6lwrIXXwVL0Pl1lNlnUwwtOTNXMAVG-bX9g/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/michael-jordan-518647157/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQEbb28zSdrImg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1677538953219?e=1776297600&v=beta&t=Mv8ldNf7r5ETSHugWEQrCCZGgmBCcsngEdBeSj3iRHg",
+    "title": "Head of Business Development Structuring",
+    "emails": [
+      "Michael.K.Jordan@mlp.com"
+    ],
+    "phones": []
+  },
+  {
+    "id": 37,
+    "name": "Jordan Fialkoff",
+    "email": "JFialkoff@fjcapital.com",
+    "phone": "703-725-6572",
+    "firm": "FJ Capital Management",
+    "age": "40",
+    "industry": "Sales and Trading",
+    "last": "Call on 2/18/2026 (continual conversations)",
+    "upcoming": "",
+    "todo": "",
+    "notes": "He put me in touch with RJ Grant. Has given great advice and been extremely open. Great dude.\nAlso, he is Patrick Pritsios' Godfather (connected because he is my \"G-Son\"",
+    "calldoc": "https://docs.google.com/document/d/1nHT8GQ2uqG499IWjhGBipQvk-rb3uo7ghTJ8d61I8N0/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/jordan-fialkoff/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4E03AQHka__KoCWYvg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1517740253886?e=1776297600&v=beta&t=oGut3gbBnIa79qROoIOXXutx38d1Y-jLOHaWlrF_tpE",
+    "title": "HeadTrader / Portfolio Analyst",
+    "emails": [
+      "JFialkoff@fjcapital.com"
+    ],
+    "phones": [
+      "703-725-6572"
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Henrik Sukonnik",
+    "email": "henrik.sukonnik@hw-anderson.com",
+    "phone": "",
+    "firm": "HW Anderson",
+    "age": "40",
+    "industry": "Consulting",
+    "last": "Interviewed in-person on 3/4/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Executive Search. Declined job offer — compensation not where I want it. Told him why, he was appreciative of the feedback and wanted to stay in touch.",
+    "calldoc": "https://docs.google.com/document/d/1lVKuqBHYPogWH_UDcffqDwJS9GK6XIB_yyH1SalD0h0/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/henrik-sukonnik-0b508624/",
+    "photo": "https://media.licdn.com/dms/image/v2/C5603AQHfCIa84g81hw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1632748669841?e=1776297600&v=beta&t=bPz_xYsRdPaC8jZqeirBkxMTZRh_WTwlsT4BQSRjNZw",
+    "title": "Managing Director",
+    "emails": [
+      "henrik.sukonnik@hw-anderson.com"
+    ],
+    "phones": []
+  },
+  {
+    "id": 39,
+    "name": "Callie Danforth",
+    "email": "callie.danforth@hw-anderson.com",
+    "phone": "",
+    "firm": "HW Anderson",
+    "age": "30",
+    "industry": "Consulting",
+    "last": "Interviewed in-person on 3/4/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Executive Search. Declined job offer — compensation not where I want it.\nShe interviewed me for my second interview. Very kind and easy to talk to.",
+    "calldoc": "https://docs.google.com/document/d/1lVKuqBHYPogWH_UDcffqDwJS9GK6XIB_yyH1SalD0h0/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/callie-danforth-a15717136/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4D03AQFwZ0AIsQiktg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1632497971589?e=1776297600&v=beta&t=g4YiWJE1FU9GPB1Z1McLlfQ5ox5RdtQXYRH-7A9HS_M",
+    "title": "Director",
+    "emails": [
+      "callie.danforth@hw-anderson.com"
+    ],
+    "phones": []
+  },
+  {
+    "id": 40,
+    "name": "Mike Gianforcaro",
+    "emails": [
+      "Michael.Gianforcaro@psc.com"
+    ],
+    "phones": [
+      "610-425-7957"
+    ],
+    "firm": "Piper Sandler",
+    "title": "Analyst",
+    "age": "23",
+    "industry": "Investment Banking",
+    "last": "2/9/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "He put me in contact with Sean Cameron who never ended up answering me, but still Mike is a great dude and helpful",
+    "calldoc": "https://docs.google.com/document/d/1XGw9L_rBSJL2k1krJoI2-K8xkHgg-_uKJ0YMZpfjakM/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/michael-gianforcaro/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFJI229EzWMCw/profile-displayphoto-scale_400_400/B4EZiBTqtUGYAk-/0/1754516075232?e=1776297600&v=beta&t=JXG8j9f3JOtBIszHSck2TgcZbGDmWKgiXpNhBgq0vmo"
+  },
+  {
+    "id": 41,
+    "name": "Andrew Rebak",
+    "emails": [
+      "rebak@mtspartners.com"
+    ],
+    "phones": [
+      "609-751-8121"
+    ],
+    "firm": "MTS Health Partners",
+    "title": "Analyst",
+    "age": "24",
+    "industry": "Investment Banking",
+    "last": "Call on 12/19/2025 / Follow-up on 1/13/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "He talked to HR for me and MTS is only looking for lateral hires currently",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/andrew-rebak-0a3016158/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQEYksDp1sLyEg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1726185989612?e=1776297600&v=beta&t=hg9undAnN5TzNDbxJZDEvDOpuf0rhX9olq4l7Re_amA"
+  },
+  {
+    "id": 42,
+    "name": "Olivia Koch",
+    "emails": [],
+    "phones": [
+      "609-480-6384"
+    ],
+    "firm": "Piper Sandler",
+    "title": "Analyst",
+    "age": "24",
+    "industry": "Investment Banking",
+    "last": "Call on 12/12/2025 / Text on 12/17/2025",
+    "upcoming": "",
+    "todo": "",
+    "notes": "She put me in contact with Mike Gianforcaro",
+    "calldoc": "https://docs.google.com/document/d/1oTo_cqjQbv7TIHIUb99vOkyM2Z5Sg6EUv3A_ZUqd9Hg/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/oliviamkoch/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4E03AQHZBySn9iwJJw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1598734609978?e=1776297600&v=beta&t=y0TTNn_YKS9OudafjHa3pq3vGDZSmek0Iy4V5vWPHVc"
+  },
+  {
+    "id": 43,
+    "name": "Leah Wahba Robert",
+    "emails": [
+      "leah.wahba@arizegp.com"
+    ],
+    "phones": [],
+    "firm": "Arize",
+    "title": "Co-Founder and CEO",
+    "age": "40-50",
+    "industry": "Consulting",
+    "last": "Call on 3/31/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "She is awesome. Very smart.\nTold me all about Arize's strategy and how the way EcoMark aligns with my morals is the same way she operates with Arize",
+    "calldoc": "https://docs.google.com/document/d/1niAOglHths-JB7af2bs7jZvk41pl0xv0r7P_W0jbdOQ/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/leah-wahba-robert-9392658/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQHF-ppSOHM0ow/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1709847317304?e=1776297600&v=beta&t=kLrHpSkNghBmIyZW1AOIkjl38_hGK6yzYjWrQQ6KGRw"
+  },
+  {
+    "id": 44,
+    "name": "Steve Sommers",
+    "emails": [
+      "Sommers13@hotmail.com"
+    ],
+    "phones": [
+      "949-400-7749"
+    ],
+    "firm": "Gartner",
+    "title": "Executive Partner - Gartner for Chief Marketing Executives / Ex-CMO of Vineyard Vines / Ex-VP at Under Armour",
+    "age": "50",
+    "industry": "Consulting",
+    "last": "Call on 2/18/2026 / Followed up on 3/5/2026 - No Response",
+    "upcoming": "",
+    "todo": "",
+    "notes": "He put me in contact with 3 very high-up guys within the marketing industry.\nUnfortunately, they haven't been very helpful",
+    "calldoc": "https://docs.google.com/document/d/1Ysomplmlyh_QwysQzTM9cSuGHkwo_DKPEBUhqTr2mJY/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/stevesommers/",
+    "photo": "https://media.licdn.com/dms/image/v2/C4E03AQHf_XpOvcZXcA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1576681098504?e=1776297600&v=beta&t=tr75i1FgQ1-1iTL1kBFtIMZq-3RF8IR6mruLVsZV-tA"
+  },
+  {
+    "id": 45,
+    "name": "Stephen Perkins",
+    "emails": [
+      "sperkins@opry.com"
+    ],
+    "phones": [
+      "615-943-0253"
+    ],
+    "firm": "Opry Entertainment Group",
+    "title": "CMO",
+    "age": "50+",
+    "industry": "Marketing",
+    "last": "Call on 3/5/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Was not the most helpful call.",
+    "calldoc": "https://docs.google.com/document/d/1xrJv7EeFLzEgtB_YMcP7aBjQ2eqQNqAMTQKh1C-pdv8/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/stephenperk/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQGou_t3fgqXVg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1721832884660?e=1776297600&v=beta&t=8xcNyg6yUUUeCb4xZQ8VwZn8XL17wm99Jv-g4Xwj6Js"
+  },
+  {
+    "id": 46,
+    "name": "David Ruf",
+    "emails": [],
+    "phones": [
+      "203-918-1950"
+    ],
+    "firm": "SFW Capital Partners",
+    "title": "Senior Associate",
+    "age": "28",
+    "industry": "Private Equity",
+    "last": "Call on 3/17/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "VERY similar background to me. Creative, wanted to be in Private Capital space, looked into Strategy consulting, but it was hard to get into out of college.\nHis Dad is an investment banker, so he helped him get his foot in the door to IB in order to get into PE",
+    "calldoc": "https://docs.google.com/document/d/1yFD8iKAipcS890WhUcztxozdn26TKr5SaTG6ReZazlg/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/david-ruf-175300112/",
+    "photo": "https://media.licdn.com/dms/image/v2/C5603AQFqJpdUIYSWUA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1650900793517?e=1776297600&v=beta&t=Jjlp0D7ywgHtm8n0NdQ6_pqesEpc7PNNW5x0S_ItCI0"
+  },
+  {
+    "id": 47,
+    "name": "John Morcos",
+    "emails": [],
+    "phones": [
+      "786-382-9207"
+    ],
+    "firm": "Goldman Sachs",
+    "title": "Associate, US Fundamental Equity",
+    "age": "29",
+    "industry": "Asset Management",
+    "last": "Call on 2/23/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "calldoc": "https://docs.google.com/document/d/1dOqDQbaZSe7O1pUj6vQeDDKZFO3-dFZoSD8qtcYWhng/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/john-morcos-437088106/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4D03AQF_YpxUL04r9w/profile-displayphoto-scale_100_100/B4DZvw8plGKEAc-/0/1769273990078?e=1776297600&v=beta&t=InD4TU6FgZ_tJt4jj4YQuS_CA9eG7Nr7gmjTko-vSqY"
+  },
+  {
+    "id": 48,
+    "name": "Stephanie Gorski",
+    "emails": [],
+    "phones": [
+      "215-802-4988"
+    ],
+    "firm": "Accenture",
+    "title": "Global Strategy Lead of Software & Platform Strategy Practice",
+    "age": "41",
+    "industry": "Consulting",
+    "last": "Call on 3/27/2026",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Sister-in-law to Emily Gorski (DIG)\n\"If I were you, I would look to get hired by an Ai startup right out of college. It is the most important skill you can learn right now, and if you eventually want to work in strategy, you need to know Ai.\"",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/stephanie-gorski-strategypartner/",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQHIplRuvNBf0A/profile-displayphoto-scale_100_100/B4EZpO7X6rKgAc-/0/1762260779189?e=1776297600&v=beta&t=RVqsivany1YovNHGCEvRTmozip0OXUR1EL1JGuhax2g"
+  },
+  {
+    "id": 49,
+    "name": "Ryan Bonifacino",
+    "emails": [],
+    "phones": [
+      "302-559-7777"
+    ],
+    "firm": "shiftkey / 8VC / Alex and Ani",
+    "title": "CMO / Limited Partner / Ex-CMO / Advisor to Various companies",
+    "age": "41",
+    "industry": "Other",
+    "last": "Messaged on 2/21/2026 - No response",
+    "upcoming": "",
+    "todo": "Follow-up with bro to schedule a call",
+    "notes": "",
+    "calldoc": "",
+    "linkedin": "https://www.linkedin.com/in/ryanbonifacino/details/experience/",
+    "photo": "https://media.licdn.com/dms/image/v2/C5103AQEGqoh0lf6Ifw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1516356210434?e=1776297600&v=beta&t=IBvtrPTiyHduX4AEItqGom3sa8GqcEu_aNFDsO2VB-I"
+  },
+  {
+    "id": 50,
+    "name": "Ernie Talbert",
+    "emails": [],
+    "phones": [
+      "213-238-1458"
+    ],
+    "firm": "Amazon Music",
+    "title": "Global Head of Brand Marketing Strategy",
+    "age": "40-50",
+    "industry": "Marketing",
+    "last": "Messaged on 3/25/2026 to schedule a call - waiting on response",
+    "upcoming": "",
+    "todo": "Follow up with him on 4/6/2026",
+    "notes": "",
+    "calldoc": "https://docs.google.com/document/d/1oHo3H857uueCbOhDtMeFJxKsAylowsFOtqIdEhFCCUM/edit?tab=t.0",
+    "linkedin": "https://www.linkedin.com/in/ernietalbert/",
+    "photo": ""
+  },
+  {
+    "id": 51,
+    "name": "Allison Waldman",
+    "title": "Senior Strategist, Sports Marketing",
+    "firm": "SeatGeek",
+    "industry": "Marketing",
+    "emails": [],
+    "phones": [
+      "516-662-5762"
+    ],
+    "age": "26",
+    "last": "2026-04-01",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Called on 4/1/2026. Very kind and laid back.",
+    "linkedin": "https://www.linkedin.com/in/allison-waldman-876a6019a/",
+    "calldoc": "https://docs.google.com/document/d/1ncFqQ9qoTvGjlxdTsImYE-5SwnFyplm01Ha7AG0Xmck/edit?tab=t.0",
+    "photo": "https://media.licdn.com/dms/image/v2/C4D03AQHF--k3_hehvQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1579119946458?e=1776902400&v=beta&t=dft55xHMpFWDrNUiMTY7XEkta70VTf-rqbQluUkifH0"
+  },
+  {
+    "id": 52,
+    "name": "Ryan Tomasello",
+    "title": "Managing Director",
+    "firm": "Stifel (KBW)",
+    "industry": "Investment Banking",
+    "emails": [
+      "rtomasello@kbw.com"
+    ],
+    "phones": [],
+    "age": "36",
+    "last": "2026-03-31",
+    "upcoming": "",
+    "todo": "\"Reach out late April to schedule something\"",
+    "notes": "",
+    "linkedin": "https://www.linkedin.com/in/ryantomasello/",
+    "calldoc": "",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQG1U1pyItLE4A/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1686971995003?e=1776902400&v=beta&t=Z79Q9etS4HpI6HqeSUqmUzvOvq7vSYzWKldvHEVfy_I"
+  },
+  {
+    "id": 53,
+    "name": "Ibrahim Olusegun Arala",
+    "title": "Vice President, Financial Sponsors Group",
+    "firm": "Santander",
+    "industry": "Investment Banking",
+    "emails": [
+      "ibrahim.arala@santander.us"
+    ],
+    "phones": [
+      "347-820-3726"
+    ],
+    "age": "35",
+    "last": "2026-04-02",
+    "upcoming": "",
+    "todo": "",
+    "notes": "",
+    "linkedin": "https://www.linkedin.com/in/ibrahimarala/",
+    "calldoc": "https://docs.google.com/document/d/1YF8Dms-Rb4QE9RSzVGctoumuq6FQjn5TXkevHNqZW1w/edit?tab=t.0",
+    "photo": "https://media.licdn.com/dms/image/v2/D4E03AQHrPBTL8zmvKg/profile-displayphoto-shrink_100_100/B4EZUq9osmHUAU-/0/1740182555740?e=1776902400&v=beta&t=CvfxtYYnIhZI_AUBRVUHFVqzgNaLhOg8tE8auY5zS5w"
+  }
+]

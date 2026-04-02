@@ -135,6 +135,7 @@
     <span class="save-status" id="save-status">💾 No Save File</span>
     <button class="btn btn-ghost btn-sm" onclick="connectSaveFile()" title="Connect to a JSON save file">📂 Connect File</button>
     <label class="btn btn-ghost btn-sm" style="cursor:pointer;" title="Force import contacts from a JSON file">⬆️ Import JSON<input type="file" accept=".json" style="display:none;" onchange="importJSON(event)"></label>
+    <button class="btn btn-ghost btn-sm" onclick="loadFromGitHub()" title="Load latest contacts from GitHub">🌐 Load from GitHub</button>
     <button class="btn btn-ghost btn-sm" onclick="exportJSON()">💾 Export JSON</button>
     <button class="btn btn-ghost btn-sm" onclick="exportCSV()">⬇️ Export CSV</button>
     <button class="btn btn-primary btn-sm" onclick="openAddModal()">+ Add Contact</button>
@@ -1062,6 +1063,24 @@ function renderActions() {
 // ============================================================
 // EXPORT CSV
 // ============================================================
+async function loadFromGitHub() {
+  const url = 'https://raw.githubusercontent.com/mikeybrandt2323/brandt-network/main/Brandt%20Network%20Data.json?t=' + Date.now();
+  try {
+    toast('Loading from GitHub...');
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const loaded = _migrate(await res.json());
+    if (!Array.isArray(loaded) || loaded.length === 0) { toast('No contacts found on GitHub.'); return; }
+    contacts = loaded;
+    nextId = contacts.reduce((m,c) => Math.max(m, c.id||0), 0) + 1;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
+    renderContacts();
+    toast('✅ Loaded ' + contacts.length + ' contacts from GitHub!');
+  } catch(e) {
+    toast('Failed to load from GitHub: ' + e.message);
+  }
+}
+
 function importJSON(event) {
   const file = event.target.files[0];
   if (!file) return;
