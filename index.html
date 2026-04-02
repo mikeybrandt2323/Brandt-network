@@ -141,6 +141,19 @@
   </div>
 </header>
 
+<div id="how-to-banner" style="background:#1a1a2e;border-bottom:1px solid #0f3460;padding:10px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <div style="color:rgba(255,255,255,0.85);font-size:0.82rem;line-height:1.6;">
+    <strong style="color:#e94560;">📋 How to keep everything in sync:</strong>
+    &nbsp;
+    <strong>Local use:</strong> Open this HTML → <em>📂 Connect File</em> → select <code style="background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px;">Brandt Network Data.json</code> → edits auto-save to the JSON.
+    &nbsp;|&nbsp;
+    <strong>Update website:</strong> Go to the GitHub Pages site → click <em>⬆️ Import JSON</em> → select <code style="background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px;">Brandt Network Data.json</code>.
+    &nbsp;|&nbsp;
+    <strong>⚠️ Always Connect File BEFORE making changes.</strong>
+  </div>
+  <button onclick="document.getElementById('how-to-banner').style.display='none'" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:1.1rem;flex-shrink:0;" title="Dismiss">✕</button>
+</div>
+
 <div class="tabs">
   <div class="tab active" onclick="switchTab('contacts')" id="tab-contacts">Contacts <span class="count-badge" id="count-badge">0</span></div>
   <div class="tab" onclick="switchTab('review')" id="tab-review">Review Contacts</div>
