@@ -134,6 +134,8 @@
   <div class="header-right">
     <span class="save-status" id="save-status">💾 No Save File</span>
     <button class="btn btn-ghost btn-sm" onclick="connectSaveFile()" title="Connect to a JSON save file">📂 Connect File</button>
+    <label class="btn btn-ghost btn-sm" style="cursor:pointer;" title="Force import contacts from a JSON file">⬆️ Import JSON<input type="file" accept=".json" style="display:none;" onchange="importJSON(event)"></label>
+    <button class="btn btn-ghost btn-sm" onclick="exportJSON()">💾 Export JSON</button>
     <button class="btn btn-ghost btn-sm" onclick="exportCSV()">⬇️ Export CSV</button>
     <button class="btn btn-primary btn-sm" onclick="openAddModal()">+ Add Contact</button>
   </div>
@@ -1047,6 +1049,36 @@ function renderActions() {
 // ============================================================
 // EXPORT CSV
 // ============================================================
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const loaded = _migrate(JSON.parse(e.target.result));
+      if (!Array.isArray(loaded) || loaded.length === 0) { toast('No contacts found in file.'); return; }
+      contacts = loaded;
+      nextId = contacts.reduce((m,c) => Math.max(m, c.id||0), 0) + 1;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
+      renderContacts();
+      toast('✅ Loaded ' + contacts.length + ' contacts from JSON!');
+    } catch(err) {
+      toast('Error reading file: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = ''; // reset so same file can be re-imported
+}
+
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(contacts, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'Brandt Network Data.json'; a.click();
+  URL.revokeObjectURL(url);
+  toast('JSON exported!');
+}
+
 function exportCSV() {
   const headers = ['Name','Title','Firm','Industry','Emails','Phones','Age','Last Contacted','Upcoming','Todo','Notes','LinkedIn','Call Doc'];
   const rows = contacts.map(c => [
