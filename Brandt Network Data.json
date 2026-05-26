@@ -709,7 +709,7 @@
     "upcoming": "Call on 4/3/2026",
     "todo": "",
     "notes": "Electronic Trading",
-    "calldoc": "",
+    "calldoc": "https://docs.google.com/document/d/1bu4j8PMwYqxZ6qd15CiWwtQ-a9z3YfQg8K9o7SzwmjY/edit?tab=t.0",
     "linkedin": "https://www.linkedin.com/in/jamiefedorjaka/",
     "photo": "https://media.licdn.com/dms/image/v2/D4E03AQEuKgui7yApvg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1725333527282?e=1776297600&v=beta&t=g3feVLNSwZsPJgAt5iq3-Y4hIh413TUrodBBSm1P0Sk",
     "title": "Equity Sales Trader",
@@ -1121,5 +1121,24 @@
     "linkedin": "https://www.linkedin.com/in/ibrahimarala/",
     "calldoc": "https://docs.google.com/document/d/1YF8Dms-Rb4QE9RSzVGctoumuq6FQjn5TXkevHNqZW1w/edit?tab=t.0",
     "photo": "https://media.licdn.com/dms/image/v2/D4E03AQHrPBTL8zmvKg/profile-displayphoto-shrink_100_100/B4EZUq9osmHUAU-/0/1740182555740?e=1776902400&v=beta&t=CvfxtYYnIhZI_AUBRVUHFVqzgNaLhOg8tE8auY5zS5w"
+  },
+  {
+    "id": 54,
+    "name": "David Dembowitz",
+    "title": "Chief Revenue Officer",
+    "firm": "Carnegie Fabircs",
+    "industry": "Sales",
+    "emails": [
+      "ddembowitz@carnegiefabrics.com"
+    ],
+    "phones": [],
+    "age": "",
+    "last": "2026-05-19",
+    "upcoming": "",
+    "todo": "",
+    "notes": "Has contacts in PE because his firm is owned by a PE firm",
+    "linkedin": "https://www.linkedin.com/in/david-dembowitz-b6703769/",
+    "calldoc": "",
+    "photo": "https://media.licdn.com/dms/image/v2/C4D03AQEYdkt0yIVUVg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1613331748643?e=1781136000&v=beta&t=l3QUMZ6frm5qkFMs7f-TxV47QZESolFTNDmdLTRA3Rc"
   }
 ]
