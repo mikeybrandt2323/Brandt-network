@@ -689,10 +689,16 @@ function renderContacts() {
     </tr>`).join('');
 }
 
+function proxyImg(url) {
+  if (!url) return '';
+  if (url.startsWith('data:')) return url; // base64 uploads — use directly
+  return 'https://images.weserv.nl/?url=' + encodeURIComponent(url.replace(/^https?:\/\//, ''));
+}
+
 function cardHTML(c) {
   const initials = (c.name||'?').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
   const avatar = c.photo
-    ? `<div class="card-avatar"><img src="${c.photo}" alt="${esc(c.name)}"></div>`
+    ? `<div class="card-avatar"><img src="${proxyImg(c.photo)}" alt="${esc(c.name)}" onerror="this.parentElement.innerHTML='${initials}'"></div>`
     : `<div class="card-avatar">${initials}</div>`;
   const email1 = (c.emails||[])[0] || '';
   const phone1 = (c.phones||[])[0] || '';
@@ -947,7 +953,7 @@ function handleReviewPhoto(event) {
 function updateReviewAvatar(c) {
   const av = document.getElementById('review-avatar');
   if (c.photo) {
-    av.innerHTML = `<img src="${c.photo}" alt="${esc(c.name)}">`;
+    av.innerHTML = `<img src="${proxyImg(c.photo)}" alt="${esc(c.name)}">`;
   } else {
     const initials = (c.name||'?').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
     av.innerHTML = `<span id="review-avatar-letter">${initials}</span>`;
